@@ -1,0 +1,83 @@
+🎯 DEMO INSTRUCTIONS – Aegis Legal Intelligence (UI-Only Mock)
+
+This is a non-functional UI demo for Aegis Legal Intelligence, designed to simulate the final user experience. The backend does not need to perform real analysis. All results should be mocked using static files. The goal is to create a beautiful, clickable interface for demo video purposes.
+
+📁 PROJECT STRUCTURE:
+/main.py                        ← optional FastAPI stub
+/templates/index.html          ← main UI page
+/static/css/style.css          ← styling for all pages
+/static/img/                   ← icons (brain, timeline, etc.)
+/mock_outputs/                 ← folder for fake JSON/text used for analysis output
+
+🌐 TOP-LEVEL TABS IN UI:
+[ Upload ] [ Analyze ] [ Review Results ] [ Report ]
+
+🔹 UPLOAD TAB:
+Split into two panels:
+Left: “Upload Opposing Party’s Filings”
+ • Rule_for_Contempt.pdf
+ • Exhibits_1-12.pdf
+
+Right: “Upload Your Client’s Evidence”
+ • Testimony_Affidavit.pdf
+ • Client_Exhibits_13-22.pdf
+
+Bottom: ▶️ Begin Analysis button
+
+🔹 ANALYZE TAB:
+Show progress animation and brain icon:
+ “Analyzing documents… cross-referencing claims…”
+
+After 2–3 seconds, auto-navigate to Review Results tab.
+
+🔹 REVIEW RESULTS TAB:
+Use vertical subtabs inside this section:
+
+→ Contradictions:
+ • ❝ I was excluded from the evaluation. ❞  
+  → Contradicted by: “Mae Igi declined to attend” – Email 4/10/23, Page 3, Line 12  
+ • Confidence: 94%  
+ • [View Citation]
+
+→ Reciprocal Misconduct:
+ • ❝ Tom never communicates. ❞  
+  → 47 unanswered messages from Tom – Exhibit D, Lines 33–49  
+ • [Show Message Trail]
+
+→ Alienation Patterns:
+ • Pattern: Pre-court Alienation Surge  
+ • Occurrences: 4  
+ • Example: “You don’t have to be afraid of your dad anymore.”  
+ • Pattern Cycle: Warm → Accusation → Victimhood → Child Guilt  
+ • [View Pattern Timeline]
+
+→ Timeline View:
+ • Scrollable horizontal timeline
+ • Color-coded dots for:
+  – ⚖️ Court Events
+  – 🔥 Escalation Events
+  – 📄 Contradictions
+ • Tooltip on hover shows: Date, Event Description, Citation
+
+🔹 REPORT TAB:
+Court-style mock PDF preview:
+ • Executive Summary  
+ • Contradictions Table  
+ • Misconduct Table  
+ • Timeline Snapshot  
+ • Export Buttons:
+  – Export PDF  
+  – Download ZIP  
+  – View Evidence Log
+
+🧪 MOCK DATA FILES (use static JSON):
+/mock_outputs/contradictions.json  
+/mock_outputs/misconduct.json  
+/mock_outputs/alienation.json  
+/mock_outputs/timeline.json  
+/mock_outputs/report.html
+
+✅ GOAL:
+Create a stunning, interactive interface that simulates the full Aegis Legal Intelligence system. It must demonstrate uploads, AI-driven findings, timelines, and court-ready output. No real NLP or processing is required. This is a high-fidelity demo for presentations and investor/legal audiences.
+
+DO NOT add real model logic or document parsing. Just show the intended behavior and fake outputs.
