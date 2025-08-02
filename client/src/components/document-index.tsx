@@ -96,6 +96,45 @@ const documentDatabase: DocumentItem[] = [
     type: "email",
     status: "available",
     relevantFindings: ["Misconduct #1"]
+  },
+  {
+    id: "DOC-007",
+    exhibit: "Exhibit G",
+    title: "Opposing Interrogatory Responses",
+    description: "Discovery responses from opposing party containing contradictory statements",
+    source: "Opposing Counsel Filing",
+    date: "2023-03-20",
+    pages: 15,
+    type: "filing",
+    status: "cited",
+    relevantFindings: ["Contradiction #2"],
+    pageReferences: "Item 7, Page 4"
+  },
+  {
+    id: "DOC-008",
+    exhibit: "Exhibit H",
+    title: "Subpoena Exhibit Pack",
+    description: "Documents produced by opposing party under subpoena showing timeline conflicts",
+    source: "Subpoena Response",
+    date: "2023-03-25",
+    pages: 22,
+    type: "document",
+    status: "cited",
+    relevantFindings: ["Timeline Conflict"],
+    pageReferences: "Pages 8-12"
+  },
+  {
+    id: "DOC-009",
+    exhibit: "Exhibit I",
+    title: "Email String - Opposing Counsel",
+    description: "Cherry-picked email excerpts contradicted by full thread context",
+    source: "Discovery Production",
+    date: "2023-02-15 to 2023-03-30",
+    pages: 8,
+    type: "email",
+    status: "cited",
+    relevantFindings: ["Cherry-picked Evidence"],
+    pageReferences: "Full thread analysis"
   }
 ];
 

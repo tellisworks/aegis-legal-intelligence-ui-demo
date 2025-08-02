@@ -1,0 +1,85 @@
+🧠 AEGIS LEGAL INTELLIGENCE – ADD OPPOSING PARTY’S DISCOVERY UPLOAD TO DEMO
+
+🎯 OBJECTIVE:  
+Update the Upload Interface and Demo Workflow to simulate uploading **opposing party’s discovery** (e.g., interrogatories, production responses, subpoenas, exhibits). This allows the system to compare, analyze, and detect contradictions between your client’s materials and those submitted by the opposing party. This feature must appear in the UI and demo video to demonstrate real-world litigation use.
+
+---
+
+📍INSERT INTO:  
+Page 1 – Upload & Analyze
+
+---
+
+📐 UPDATED UI DESIGN:
+
+════════════════════════════════════════════════════
+**📤 Upload Documents for Analysis**
+
+[Your Client's Documents]  
+ → PDF, Word, Images, Email  
+ → e.g., declarations, texts, therapist letters, exhibits
+
+   [📁 Upload Client Files]
+
+[Opposing Party’s Discovery & Filings]  
+ → e.g., interrogatories, exhibits, court motions, emails  
+ → e.g., opposing memo, text screenshots, subpoenas
+
+   [📁 Upload Opposing Party Files]
+
+[⚖️ Analyze Everything] ← button  
+════════════════════════════════════════════════════
+
+---
+
+🧪 DEMO VIDEO WALKTHROUGH INSTRUCTIONS:
+
+1. Show user launching Aegis UI.
+2. User clicks “[📁 Upload Client Files]” and selects:
+ - Rule for Contempt
+ - Exhibit Packet
+ - Timeline Statement
+
+3. Then clicks “[📁 Upload Opposing Party Files]” and selects:
+ - Opposing Interrogatory Responses  
+ - Subpoena Exhibit Pack  
+ - Email string from opposing counsel
+
+4. User clicks “[⚖️ Analyze Everything]”
+
+5. System “processes” the materials (fake delay 2s)
+
+6. Results appear in tabs:
+ - Contradictions
+ - Misconduct / Bad Faith
+ - Parental Alienation
+ - Timeline Shifts
+ - Court-Ready Report
+
+---
+
+📂 MOCK FINDING EXAMPLES TO DISPLAY:
+
+**📌 Contradiction:**  
+Opposing Interrogatory (Item 7): "Tom never informed me of the evaluation."  
+→ Contradicted by Exhibit 14 (Text message from Tom: "You are invited to attend.")  
+📄 Source: Opposing Discovery / Text Messages / Page 3
+
+**📌 Misconduct Pattern:**  
+Opposing emails show cherry-picked evidence submitted to the court, contradicting full thread.
+
+**📌 Timeline Conflict:**  
+Opposing timeline claims “agreement reached in January”  
+→ Client exhibits show ongoing dispute into March.
+
+---
+
+✅ OUTCOME:
+
+This addition demonstrates:
+- True adversarial legal document comparison
+- Aegis’s ability to process BOTH sides
+- Context-aware contradiction and misconduct detection
+- Realistic legal workflow: discovery review, pattern matching, timeline reassembly
+
+💡 This is a visual-only feature for demo purposes — no backend logic needed. Show file names, fake progress bar, and example findings triggered by opposing discovery.

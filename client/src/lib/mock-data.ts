@@ -38,6 +38,14 @@ export const mockContradictions: Contradiction[] = [
     confidence: 94,
     impact: "High",
     citation_link: "exhibits/email_041023.pdf"
+  },
+  {
+    statement: "Petitioner never informed me of the evaluation.",
+    contradicted_by: "Text message from Petitioner: 'You are invited to attend.'",
+    source: "Opposing Discovery / Text Messages / Exhibit 14",
+    confidence: 91,
+    impact: "High", 
+    citation_link: "exhibits/opposing_interrogatory_item7.pdf"
   }
 ];
 
@@ -48,6 +56,13 @@ export const mockMisconduct: Misconduct[] = [
     source: "Exhibit D, Lines 33–49",
     impact: "High",
     message_trail_link: "exhibits/exhibit_d.pdf"
+  },
+  {
+    accusation: "Cherry-picked evidence submitted to court",
+    reciprocal_evidence: "Opposing emails show selective excerpts contradicting full thread context",
+    source: "Email String Opposing Counsel / Full Thread Analysis",
+    impact: "High",
+    message_trail_link: "exhibits/email_string_analysis.pdf"
   }
 ];
 

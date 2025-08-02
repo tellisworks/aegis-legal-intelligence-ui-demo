@@ -2,7 +2,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { AlertTriangle, Scale, HeartCrack, Clock, Link, Download, BarChart3, MessageSquare, TrendingUp, Shield, Anchor, Eye, User } from "lucide-react";
+import { AlertTriangle, Scale, HeartCrack, Clock, Link, Download, BarChart3, MessageSquare, TrendingUp, Shield, Anchor, Eye, User, Users, FileText } from "lucide-react";
 import { motion } from "framer-motion";
 import { mockContradictions, mockMisconduct, mockAlienation } from "@/lib/mock-data";
 import TimelineView from "./timeline-view";
@@ -154,6 +154,69 @@ export default function ResultsPanel() {
                   )}
                 </motion.div>
               ))}
+              
+              {/* NEW: Opposing Party Discovery Contradictions */}
+              <motion.div
+                className="bg-red-50 border border-red-200 rounded-lg p-6"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-red-900 mb-2 flex items-center">
+                      <Users className="mr-2 h-5 w-5" />
+                      Discovery Response Contradiction
+                    </h3>
+                    <blockquote className="text-red-800 italic text-lg mb-3">
+                      "Petitioner never informed me of the evaluation" (Interrogatory Item 7)
+                    </blockquote>
+                  </div>
+                  <Badge className="bg-red-100 text-red-800">
+                    High Impact
+                  </Badge>
+                </div>
+                <div className="bg-white rounded-lg p-4 border border-red-200">
+                  <p className="text-gray-700 mb-2"><strong>Contradictory Evidence:</strong></p>
+                  <p className="text-gray-600 mb-3">Text message from Petitioner: "You are invited to attend" – Exhibit H / Message Thread</p>
+                  <div className="flex space-x-3">
+                    <Button size="sm" className="bg-primary text-white hover:bg-primary/90">
+                      <FileText className="mr-2 h-4 w-4" />
+                      View Discovery Response
+                    </Button>
+                    <Button size="sm" variant="outline">
+                      <MessageSquare className="mr-2 h-4 w-4" />
+                      Text Message Evidence
+                    </Button>
+                  </div>
+                </div>
+                <ExhibitAnchoredValidation 
+                  finding={{
+                    id: "contradiction-2",
+                    type: "contradiction",
+                    title: "False Discovery Response",
+                    description: "Opposing party falsely claimed non-notification in sworn discovery response",
+                    aiConfidence: 91,
+                    supportingExhibits: [
+                      {
+                        exhibit: "Exhibit G",
+                        title: "Opposing Interrogatory Responses",
+                        relevantQuote: "Petitioner never informed me of the evaluation",
+                        pageReference: "Item 7, Page 4"
+                      },
+                      {
+                        exhibit: "Exhibit H",
+                        title: "Text Message Evidence",
+                        relevantQuote: "You are invited to attend the psychological evaluation",
+                        pageReference: "Message Thread, March 8"
+                      }
+                    ],
+                    requiresValidation: true,
+                    humanStatus: "pending"
+                  }}
+                  onValidate={(id, validation) => console.log('Validated:', id, validation)}
+                />
+              </motion.div>
             </div>
           </TabsContent>
 
@@ -225,6 +288,43 @@ export default function ResultsPanel() {
                   )}
                 </motion.div>
               ))}
+
+              {/* NEW: Cherry-picked Evidence Pattern */}
+              <motion.div
+                className="bg-yellow-50 border border-yellow-200 rounded-lg p-6"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-yellow-900 mb-2 flex items-center">
+                      <AlertTriangle className="mr-2 h-5 w-5" />
+                      Cherry-picked Evidence Misconduct
+                    </h3>
+                    <blockquote className="text-yellow-800 italic text-lg mb-3">
+                      "Selective evidence presentation contradicting full context"
+                    </blockquote>
+                  </div>
+                  <Badge className="bg-yellow-100 text-yellow-800">
+                    High Impact
+                  </Badge>
+                </div>
+                <div className="bg-white rounded-lg p-4 border border-yellow-200">
+                  <p className="text-gray-700 mb-2"><strong>Pattern Detected:</strong></p>
+                  <p className="text-gray-600 mb-3">Opposing emails show selective excerpts contradicting full thread context – Email String Analysis</p>
+                  <div className="flex space-x-3">
+                    <Button size="sm" className="bg-primary text-white hover:bg-primary/90">
+                      <FileText className="mr-2 h-4 w-4" />
+                      Full Email Thread
+                    </Button>
+                    <Button size="sm" variant="outline">
+                      <Eye className="mr-2 h-4 w-4" />
+                      Compare Excerpts
+                    </Button>
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </TabsContent>
 
