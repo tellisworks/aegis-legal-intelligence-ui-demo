@@ -6,6 +6,7 @@ import { AlertTriangle, Scale, HeartCrack, Clock, Link, Download, BarChart3, Mes
 import { motion } from "framer-motion";
 import { mockContradictions, mockMisconduct, mockAlienation } from "@/lib/mock-data";
 import TimelineView from "./timeline-view";
+import ValidationInterface from "./validation-interface";
 
 export default function ResultsPanel() {
   return (
@@ -92,6 +93,7 @@ export default function ResultsPanel() {
                       </Button>
                     </div>
                   </div>
+                  <ValidationInterface findingId={`contradiction_${index}`} findingType="contradiction" />
                 </motion.div>
               ))}
             </div>
@@ -132,6 +134,7 @@ export default function ResultsPanel() {
                       </Button>
                     </div>
                   </div>
+                  <ValidationInterface findingId={`misconduct_${index}`} findingType="misconduct" />
                 </motion.div>
               ))}
             </div>
@@ -192,6 +195,7 @@ export default function ResultsPanel() {
                       View Pattern Timeline
                     </Button>
                   </div>
+                  <ValidationInterface findingId={`alienation_${index}`} findingType="alienation" />
                 </motion.div>
               ))}
             </div>

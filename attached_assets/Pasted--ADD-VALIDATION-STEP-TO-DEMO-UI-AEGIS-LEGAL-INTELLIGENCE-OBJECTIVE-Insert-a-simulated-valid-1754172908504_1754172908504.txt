@@ -1,0 +1,81 @@
+🧠 ADD VALIDATION STEP TO DEMO UI – AEGIS LEGAL INTELLIGENCE
+
+🎯 OBJECTIVE:
+Insert a simulated validation interface into the existing Review Results screen. This lets the user (attorney or reviewer) confirm, correct, or flag AI-generated findings. It shows Aegis supports legal discretion, user oversight, and learning from human input. This is a visual demo only — no backend logic required.
+
+---
+
+📍INSERT INTO:
+Add this block directly beneath each finding result (e.g., contradiction, misconduct, timeline inconsistency).
+
+---
+
+📐 UI BLOCK DESIGN:
+
+════════════════════════════════════════════════════
+**🧠 Do you agree with this finding?**
+
+ [✓ Correct] [✗ Incorrect] [📝 Needs More Info / Edit]
+
+**📄 Optional Notes or Corrections:**  
+[___________________________________________________________]
+
+**⚖️ Is this court-actionable?**  
+( ) Yes ( ) No ( ) Not Sure
+
+            [✔️ Submit Feedback]
+════════════════════════════════════════════════════
+
+---
+
+🧪 EXAMPLE (For demo video):
+
+Display a finding:
+
+📌 **Finding:**  
+"I was excluded from the psychological evaluation."  
+→ Contradicted by: "Mae Igi declined to attend."  
+(Source: Email, April 10, 2023, Pg 3, Ln 12)
+
+Then show the validation box:
+
+🧠 Do you agree with this finding?  
+ [✓ Correct] [✗ Incorrect] [📝 Needs More Info / Edit]
+
+📄 Notes:  
+[ She emailed later and asked to reschedule. Adjust impact to Medium. ]
+
+⚖️ Is this court-actionable?  
+(•) Yes ( ) No ( ) Not Sure
+
+[✔️ Submit Feedback]
+
+Popup or toast message:  
+✔️ “Feedback saved for learning.”
+
+---
+
+📂 FAKE SAVED STRUCTURE (for visuals only, no logic needed):
+
+Pretend feedback is saved to:
+`/validated_findings.json`
+
+Example content (no action required):
+
+```json
+[
+  {
+    "finding_id": "contradiction_001",
+    "status": "Correct",
+    "note": "Confirmed and relevant for court.",
+    "court_actionable": true,
+    "timestamp": "2025-08-02T15:12:00"
+  },
+  {
+    "finding_id": "contradiction_002",
+    "status": "Needs More Info",
+    "note": "She later emailed to reschedule. Downgrade impact.",
+    "court_actionable": false,
+    "timestamp": "2025-08-02T15:15:00"
+  }
+]
