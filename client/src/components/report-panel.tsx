@@ -1,9 +1,10 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { FileText, Download, Archive, List, Eye, Folder } from "lucide-react";
+import { FileText, Download, Archive, List, Eye, Folder, Database } from "lucide-react";
 import { motion } from "framer-motion";
 import ExhibitViewer from "./exhibit-viewer";
+import DocumentIndex from "./document-index";
 
 export default function ReportPanel() {
   const currentDate = new Date().toLocaleDateString();
@@ -37,6 +38,13 @@ export default function ReportPanel() {
               >
                 <Folder className="mr-2 h-4 w-4" />
                 Evidence Exhibits
+              </TabsTrigger>
+              <TabsTrigger 
+                value="index"
+                className="py-3 px-1 border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:text-primary text-gray-500 font-medium text-sm whitespace-nowrap bg-transparent"
+              >
+                <Database className="mr-2 h-4 w-4" />
+                Document Index
               </TabsTrigger>
             </div>
           </TabsList>
@@ -78,6 +86,31 @@ export default function ReportPanel() {
                             <li>• <strong>AI Confidence:</strong> 94% certainty based on linguistic analysis</li>
                             <li>• <strong>Legal Impact:</strong> Material misrepresentation to the Court</li>
                           </ul>
+                          
+                          {/* Embedded Exhibit A Preview */}
+                          <div className="mt-4 bg-blue-50 border border-blue-200 rounded-lg p-4">
+                            <h4 className="font-semibold text-blue-900 mb-2 flex items-center">
+                              📧 EXHIBIT A - Email Evidence
+                            </h4>
+                            <div className="bg-white border rounded p-3 font-mono text-sm">
+                              <div className="border-b pb-2 mb-2 text-gray-600">
+                                <div><strong>From:</strong> mae.igi@email.com</div>
+                                <div><strong>To:</strong> dr.thompson@psycheval.com</div>
+                                <div><strong>Date:</strong> April 10, 2023, 2:47 PM</div>
+                                <div><strong>Subject:</strong> Re: Psychological Evaluation Appointment</div>
+                              </div>
+                              <div className="text-gray-800">
+                                Dr. Thompson,<br/><br/>
+                                After consideration, <mark className="bg-yellow-200">I have decided not to attend the psychological evaluation scheduled for April 15th</mark>. I don't feel it's necessary at this time and would prefer to focus on other aspects of the case.<br/><br/>
+                                Please cancel my appointment.<br/><br/>
+                                Thank you,<br/>
+                                Mae Igi
+                              </div>
+                            </div>
+                            <div className="mt-2 text-xs text-blue-600">
+                              <strong>Citation:</strong> Page 3, Line 12 - Direct contradiction to court filing claim
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </section>
@@ -93,6 +126,30 @@ export default function ReportPanel() {
                             <li>• <strong>Time Period:</strong> March 15 - April 1, 2023</li>
                             <li>• <strong>Legal Significance:</strong> Evidence of deliberate communication obstruction</li>
                           </ul>
+
+                          {/* Embedded Exhibit B Preview */}
+                          <div className="mt-4 bg-green-50 border border-green-200 rounded-lg p-4">
+                            <h4 className="font-semibold text-green-900 mb-2 flex items-center">
+                              💬 EXHIBIT B - Text Message Records
+                            </h4>
+                            <div className="bg-white border rounded p-3 text-sm">
+                              <div className="border-b pb-2 mb-2 text-gray-600">
+                                <div><strong>Source:</strong> Verizon Wireless Records</div>
+                                <div><strong>Period:</strong> March 15 - April 1, 2023 (17 days)</div>
+                                <div><strong>Total Messages:</strong> 47 from Tom, 0 responses from Mae</div>
+                              </div>
+                              <div className="space-y-2 max-h-32 overflow-y-auto">
+                                <div className="text-blue-600"><strong>Tom (3/15, 2:14 PM):</strong> Can we discuss the schedule for next week?</div>
+                                <div className="text-blue-600"><strong>Tom (3/15, 4:22 PM):</strong> Please let me know about pickup times.</div>
+                                <div className="text-blue-600"><strong>Tom (3/16, 8:30 AM):</strong> I need to confirm the school event.</div>
+                                <div className="text-gray-400 text-center py-2">... 44 additional unanswered messages ...</div>
+                                <div className="text-blue-600"><strong>Tom (4/1, 7:15 PM):</strong> This is urgent regarding our child's welfare.</div>
+                              </div>
+                            </div>
+                            <div className="mt-2 text-xs text-green-600">
+                              <strong>Citation:</strong> Lines 33-49 - Pattern of communication avoidance contradicts claims
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </section>
@@ -108,6 +165,34 @@ export default function ReportPanel() {
                             <li>• <strong>Example Statement:</strong> "You don't have to be afraid of your dad anymore" (Exhibit C)</li>
                             <li>• <strong>Psychological Cycle:</strong> Warm Approach → False Accusation → Victimhood Narrative → Child Guilt Induction</li>
                           </ul>
+
+                          {/* Embedded Exhibit C Preview */}
+                          <div className="mt-4 bg-orange-50 border border-orange-200 rounded-lg p-4">
+                            <h4 className="font-semibold text-orange-900 mb-2 flex items-center">
+                              🎵 EXHIBIT C - Audio Recording
+                            </h4>
+                            <div className="bg-white border rounded p-3 text-sm">
+                              <div className="border-b pb-2 mb-2 text-gray-600">
+                                <div><strong>Source:</strong> Client Recording Device (iPhone 12)</div>
+                                <div><strong>Date:</strong> March 28, 2023, 6:45 PM</div>
+                                <div><strong>Duration:</strong> 3 minutes 42 seconds</div>
+                                <div><strong>Location:</strong> Mae's residence during child exchange</div>
+                              </div>
+                              <div className="bg-gray-50 p-3 rounded">
+                                <div className="text-gray-600 text-xs mb-2">TRANSCRIPT (Timestamp 02:34-02:47):</div>
+                                <div className="italic">
+                                  <strong>Mae:</strong> "Sweetie, come here for a minute."<br/>
+                                  <strong>Child:</strong> "What mom?"<br/>
+                                  <strong>Mae:</strong> <mark className="bg-yellow-200">"You don't have to be afraid of your dad anymore. Mommy is going to make sure the court knows the truth about him."</mark><br/>
+                                  <strong>Child:</strong> "But I'm not afraid of daddy..."<br/>
+                                  <strong>Mae:</strong> "You will understand when you're older."
+                                </div>
+                              </div>
+                            </div>
+                            <div className="mt-2 text-xs text-orange-600">
+                              <strong>Citation:</strong> Timestamp 02:34 - Clear alienation statement prior to court proceedings
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </section>
@@ -115,6 +200,41 @@ export default function ReportPanel() {
                     <section>
                       <h3 className="court-heading text-lg font-bold text-gray-900 mb-3">CONCLUSION AND RECOMMENDATIONS</h3>
                       <p className="text-gray-700 leading-relaxed">The AI analysis reveals a pattern of material misrepresentations, communication obstruction, and systematic alienation behaviors. These findings, supported by documentary evidence and confidence metrics, warrant judicial consideration for appropriate remedial action.</p>
+                    </section>
+
+                    <section className="border-t border-gray-300 pt-6 mt-8">
+                      <h3 className="court-heading text-lg font-bold text-gray-900 mb-3">EXHIBIT INDEX</h3>
+                      <div className="bg-gray-50 p-4 rounded">
+                        <div className="grid gap-2 text-sm">
+                          <div className="flex justify-between">
+                            <span><strong>Exhibit A:</strong> Email - Mae Declining Psychological Evaluation</span>
+                            <span className="text-gray-600">April 10, 2023 | 1 page</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span><strong>Exhibit B:</strong> Text Message Thread - Unanswered Communications</span>
+                            <span className="text-gray-600">March 15-April 1, 2023 | 12 pages</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span><strong>Exhibit C:</strong> Audio Recording - Alienation Statement</span>
+                            <span className="text-gray-600">March 28, 2023 | Audio transcript</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span><strong>Exhibit D:</strong> Court Filing - Original Rule for Contempt</span>
+                            <span className="text-gray-600">March 15, 2023 | 8 pages</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span><strong>Exhibit E:</strong> Counselor Session Notes</span>
+                            <span className="text-gray-600">March 28, 2023 | 3 pages</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span><strong>Exhibit F:</strong> School Communication Records</span>
+                            <span className="text-gray-600">February 20-March 10, 2023 | 6 pages</span>
+                          </div>
+                        </div>
+                        <div className="mt-4 pt-2 border-t border-gray-300 text-xs text-gray-600">
+                          <strong>Total Evidence:</strong> 6 exhibits comprising 31 pages of documentation and 1 audio recording
+                        </div>
+                      </div>
                     </section>
                   </div>
                 </div>
@@ -178,6 +298,10 @@ export default function ReportPanel() {
 
         <TabsContent value="exhibits" className="mt-0">
           <ExhibitViewer />
+        </TabsContent>
+
+        <TabsContent value="index" className="mt-0">
+          <DocumentIndex />
         </TabsContent>
       </Tabs>
     </motion.div>
