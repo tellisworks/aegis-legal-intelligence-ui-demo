@@ -86,7 +86,7 @@ export default function ExhibitAnchoredValidation({ finding, onValidate }: Exhib
       courtActionable: courtActionable === 'yes',
       notes,
       exhibitVerifications,
-      validator: "Attorney Sarah Johnson",
+      validator: "Attorney Johnson",
       timestamp: new Date().toISOString()
     });
 

@@ -82,7 +82,7 @@ export default function ReportPanel() {
                           <p><strong>Contradiction #1:</strong> Exclusion from Psychological Evaluation</p>
                           <ul className="ml-4 mt-2 space-y-1">
                             <li>• <strong>Claimed Statement:</strong> "I was excluded from the evaluation"</li>
-                            <li>• <strong>Contradictory Evidence:</strong> Email dated April 10, 2023, wherein Respondent Mae Igi affirmatively declined to attend (Exhibit A, Page 3, Line 12)</li>
+                            <li>• <strong>Contradictory Evidence:</strong> Email dated April 10, 2023, wherein Respondent affirmatively declined to attend (Exhibit A, Page 3, Line 12)</li>
                             <li>• <strong>AI Confidence:</strong> 94% certainty based on linguistic analysis</li>
                             <li>• <strong>Legal Impact:</strong> Material misrepresentation to the Court</li>
                           </ul>
@@ -94,17 +94,17 @@ export default function ReportPanel() {
                             </h4>
                             <div className="bg-white border rounded p-3 font-mono text-sm">
                               <div className="border-b pb-2 mb-2 text-gray-600">
-                                <div><strong>From:</strong> mae.igi@email.com</div>
-                                <div><strong>To:</strong> dr.thompson@psycheval.com</div>
+                                <div><strong>From:</strong> respondent@email.com</div>
+                                <div><strong>To:</strong> dr.smith@psycheval.com</div>
                                 <div><strong>Date:</strong> April 10, 2023, 2:47 PM</div>
                                 <div><strong>Subject:</strong> Re: Psychological Evaluation Appointment</div>
                               </div>
                               <div className="text-gray-800">
-                                Dr. Thompson,<br/><br/>
+                                Dr. Smith,<br/><br/>
                                 After consideration, <mark className="bg-yellow-200">I have decided not to attend the psychological evaluation scheduled for April 15th</mark>. I don't feel it's necessary at this time and would prefer to focus on other aspects of the case.<br/><br/>
                                 Please cancel my appointment.<br/><br/>
                                 Thank you,<br/>
-                                Mae Igi
+                                Respondent
                               </div>
                             </div>
                             <div className="mt-2 text-xs text-blue-600">
@@ -121,7 +121,7 @@ export default function ReportPanel() {
                         <div>
                           <p><strong>Pattern Analysis:</strong> Systematic Communication Blockage</p>
                           <ul className="ml-4 mt-2 space-y-1">
-                            <li>• <strong>Allegation:</strong> "Tom never communicates with me"</li>
+                            <li>• <strong>Allegation:</strong> "Petitioner never communicates with me"</li>
                             <li>• <strong>Counter Evidence:</strong> 47 documented unanswered communications from Petitioner (Exhibit B)</li>
                             <li>• <strong>Time Period:</strong> March 15 - April 1, 2023</li>
                             <li>• <strong>Legal Significance:</strong> Evidence of deliberate communication obstruction</li>
@@ -136,14 +136,14 @@ export default function ReportPanel() {
                               <div className="border-b pb-2 mb-2 text-gray-600">
                                 <div><strong>Source:</strong> Verizon Wireless Records</div>
                                 <div><strong>Period:</strong> March 15 - April 1, 2023 (17 days)</div>
-                                <div><strong>Total Messages:</strong> 47 from Tom, 0 responses from Mae</div>
+                                <div><strong>Total Messages:</strong> 47 from Petitioner, 0 responses from Respondent</div>
                               </div>
                               <div className="space-y-2 max-h-32 overflow-y-auto">
-                                <div className="text-blue-600"><strong>Tom (3/15, 2:14 PM):</strong> Can we discuss the schedule for next week?</div>
-                                <div className="text-blue-600"><strong>Tom (3/15, 4:22 PM):</strong> Please let me know about pickup times.</div>
-                                <div className="text-blue-600"><strong>Tom (3/16, 8:30 AM):</strong> I need to confirm the school event.</div>
+                                <div className="text-blue-600"><strong>Petitioner (3/15, 2:14 PM):</strong> Can we discuss the schedule for next week?</div>
+                                <div className="text-blue-600"><strong>Petitioner (3/15, 4:22 PM):</strong> Please let me know about pickup times.</div>
+                                <div className="text-blue-600"><strong>Petitioner (3/16, 8:30 AM):</strong> I need to confirm the school event.</div>
                                 <div className="text-gray-400 text-center py-2">... 44 additional unanswered messages ...</div>
-                                <div className="text-blue-600"><strong>Tom (4/1, 7:15 PM):</strong> This is urgent regarding our child's welfare.</div>
+                                <div className="text-blue-600"><strong>Petitioner (4/1, 7:15 PM):</strong> This is urgent regarding our child's welfare.</div>
                               </div>
                             </div>
                             <div className="mt-2 text-xs text-green-600">
@@ -176,16 +176,16 @@ export default function ReportPanel() {
                                 <div><strong>Source:</strong> Client Recording Device (iPhone 12)</div>
                                 <div><strong>Date:</strong> March 28, 2023, 6:45 PM</div>
                                 <div><strong>Duration:</strong> 3 minutes 42 seconds</div>
-                                <div><strong>Location:</strong> Mae's residence during child exchange</div>
+                                <div><strong>Location:</strong> Respondent's residence during child exchange</div>
                               </div>
                               <div className="bg-gray-50 p-3 rounded">
                                 <div className="text-gray-600 text-xs mb-2">TRANSCRIPT (Timestamp 02:34-02:47):</div>
                                 <div className="italic">
-                                  <strong>Mae:</strong> "Sweetie, come here for a minute."<br/>
+                                  <strong>Respondent:</strong> "Sweetie, come here for a minute."<br/>
                                   <strong>Child:</strong> "What mom?"<br/>
-                                  <strong>Mae:</strong> <mark className="bg-yellow-200">"You don't have to be afraid of your dad anymore. Mommy is going to make sure the court knows the truth about him."</mark><br/>
+                                  <strong>Respondent:</strong> <mark className="bg-yellow-200">"You don't have to be afraid of your dad anymore. Mommy is going to make sure the court knows the truth about him."</mark><br/>
                                   <strong>Child:</strong> "But I'm not afraid of daddy..."<br/>
-                                  <strong>Mae:</strong> "You will understand when you're older."
+                                  <strong>Respondent:</strong> "You will understand when you're older."
                                 </div>
                               </div>
                             </div>
@@ -207,7 +207,7 @@ export default function ReportPanel() {
                       <div className="bg-gray-50 p-4 rounded">
                         <div className="grid gap-2 text-sm">
                           <div className="flex justify-between">
-                            <span><strong>Exhibit A:</strong> Email - Mae Declining Psychological Evaluation</span>
+                            <span><strong>Exhibit A:</strong> Email - Respondent Declining Psychological Evaluation</span>
                             <span className="text-gray-600">April 10, 2023 | 1 page</span>
                           </div>
                           <div className="flex justify-between">

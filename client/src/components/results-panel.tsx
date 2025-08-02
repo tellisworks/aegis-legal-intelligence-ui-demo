@@ -132,7 +132,7 @@ export default function ResultsPanel() {
                         supportingExhibits: [
                           {
                             exhibit: "Exhibit A",
-                            title: "Email - Mae Declining Psychological Evaluation", 
+                            title: "Email - Respondent Declining Psychological Evaluation", 
                             relevantQuote: "I have decided not to attend the psychological evaluation scheduled for April 15th",
                             pageReference: "Page 3, Line 12"
                           },
@@ -204,13 +204,13 @@ export default function ResultsPanel() {
                           {
                             exhibit: "Exhibit B",
                             title: "Text Message Thread - Unanswered Communications",
-                            relevantQuote: "47 consecutive messages with zero responses from Mae",
+                            relevantQuote: "47 consecutive messages with zero responses from Respondent",
                             pageReference: "Lines 33-49"
                           },
                           {
                             exhibit: "Exhibit F",
                             title: "School Communication Records",
-                            relevantQuote: "Please do not include Tom in any school communications",
+                            relevantQuote: "Please do not include Petitioner in any school communications",
                             pageReference: "Email dated March 5, 2023"
                           }
                         ],

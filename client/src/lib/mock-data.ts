@@ -33,7 +33,7 @@ export interface TimelineEvent {
 export const mockContradictions: Contradiction[] = [
   {
     statement: "I was excluded from the evaluation.",
-    contradicted_by: "Mae Igi declined to attend the psychological evaluation.",
+    contradicted_by: "Respondent declined to attend the psychological evaluation.",
     source: "Email, 4/10/2023, Page 3, Line 12",
     confidence: 94,
     impact: "High",
@@ -43,8 +43,8 @@ export const mockContradictions: Contradiction[] = [
 
 export const mockMisconduct: Misconduct[] = [
   {
-    accusation: "Tom never communicates.",
-    reciprocal_evidence: "47 unanswered messages from Tom",
+    accusation: "Petitioner never communicates.",
+    reciprocal_evidence: "47 unanswered messages from Petitioner",
     source: "Exhibit D, Lines 33–49",
     impact: "High",
     message_trail_link: "exhibits/exhibit_d.pdf"
