@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { useMockInteractions } from "@/hooks/use-mock-interactions";
 import { MockExhibitModal, MockAnalysisModal, MockReportModal } from "./mock-output-modals";
+import { RealisticLoadingSequence } from "./realistic-demo-enhancements";
 
 interface UploadPanelProps {
   onStartAnalysis: () => void;
@@ -27,6 +28,8 @@ export default function UploadPanel({ onStartAnalysis }: UploadPanelProps) {
   const {
     activeModal,
     modalProps,
+    isProcessing,
+    currentTask,
     showExhibit,
     showAnalysis,
     downloadDocument,
@@ -213,6 +216,13 @@ export default function UploadPanel({ onStartAnalysis }: UploadPanelProps) {
           Start comprehensive adversarial document analysis
         </p>
       </motion.div>
+
+      {/* Loading States */}
+      <RealisticLoadingSequence
+        isVisible={isProcessing}
+        onComplete={() => {}}
+        taskName={currentTask}
+      />
 
       {/* Modal Components */}
       <MockExhibitModal 
