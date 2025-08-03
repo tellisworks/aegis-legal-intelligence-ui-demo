@@ -3,11 +3,21 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FileText, Download, Archive, List, Eye, Folder, Database } from "lucide-react";
 import { motion } from "framer-motion";
+import { useMockInteractions } from "@/hooks/use-mock-interactions";
+import { MockExhibitModal, MockAnalysisModal, MockReportModal } from "./mock-output-modals";
 import ExhibitViewer from "./exhibit-viewer";
 import DocumentIndex from "./document-index";
 
 export default function ReportPanel() {
   const currentDate = new Date().toLocaleDateString();
+  const {
+    activeModal,
+    modalProps,
+    showExhibit,
+    downloadDocument,
+    generateReport,
+    closeModal
+  } = useMockInteractions();
 
   return (
     <motion.div
@@ -82,7 +92,7 @@ export default function ReportPanel() {
                           <p><strong>Contradiction #1:</strong> Exclusion from Psychological Evaluation</p>
                           <ul className="ml-4 mt-2 space-y-1">
                             <li>• <strong>Claimed Statement:</strong> "I was excluded from the evaluation"</li>
-                            <li>• <strong>Contradictory Evidence:</strong> Email dated April 10, 2023, wherein Respondent affirmatively declined to attend (Exhibit A, Page 3, Line 12)</li>
+                            <li>• <strong>Contradictory Evidence:</strong> Email dated April 10, 2023, wherein Jane Smith affirmatively declined to attend (Exhibit A, Page 3, Line 12)</li>
                             <li>• <strong>AI Confidence:</strong> 94% certainty based on linguistic analysis</li>
                             <li>• <strong>Legal Impact:</strong> Material misrepresentation to the Court</li>
                           </ul>
@@ -94,7 +104,7 @@ export default function ReportPanel() {
                             </h4>
                             <div className="bg-white border rounded p-3 font-mono text-sm">
                               <div className="border-b pb-2 mb-2 text-gray-600">
-                                <div><strong>From:</strong> respondent@email.com</div>
+                                <div><strong>From:</strong> jane.smith@email.com</div>
                                 <div><strong>To:</strong> dr.smith@psycheval.com</div>
                                 <div><strong>Date:</strong> April 10, 2023, 2:47 PM</div>
                                 <div><strong>Subject:</strong> Re: Psychological Evaluation Appointment</div>
@@ -104,7 +114,7 @@ export default function ReportPanel() {
                                 After consideration, <mark className="bg-yellow-200">I have decided not to attend the psychological evaluation scheduled for April 15th</mark>. I don't feel it's necessary at this time and would prefer to focus on other aspects of the case.<br/><br/>
                                 Please cancel my appointment.<br/><br/>
                                 Thank you,<br/>
-                                Respondent
+                                Jane Smith
                               </div>
                             </div>
                             <div className="mt-2 text-xs text-blue-600">
@@ -136,7 +146,7 @@ export default function ReportPanel() {
                               <div className="border-b pb-2 mb-2 text-gray-600">
                                 <div><strong>Source:</strong> Verizon Wireless Records</div>
                                 <div><strong>Period:</strong> March 15 - April 1, 2023 (17 days)</div>
-                                <div><strong>Total Messages:</strong> 47 from Petitioner, 0 responses from Respondent</div>
+                                <div><strong>Total Messages:</strong> 47 from Petitioner, 0 responses from Jane Smith</div>
                               </div>
                               <div className="space-y-2 max-h-32 overflow-y-auto">
                                 <div className="text-blue-600"><strong>Petitioner (3/15, 2:14 PM):</strong> Can we discuss the schedule for next week?</div>
@@ -176,16 +186,16 @@ export default function ReportPanel() {
                                 <div><strong>Source:</strong> Client Recording Device (iPhone 12)</div>
                                 <div><strong>Date:</strong> March 28, 2023, 6:45 PM</div>
                                 <div><strong>Duration:</strong> 3 minutes 42 seconds</div>
-                                <div><strong>Location:</strong> Respondent's residence during child exchange</div>
+                                <div><strong>Location:</strong> Jane Smith's residence during child exchange</div>
                               </div>
                               <div className="bg-gray-50 p-3 rounded">
                                 <div className="text-gray-600 text-xs mb-2">TRANSCRIPT (Timestamp 02:34-02:47):</div>
                                 <div className="italic">
-                                  <strong>Respondent:</strong> "Sweetie, come here for a minute."<br/>
+                                  <strong>Jane Smith:</strong> "Sweetie, come here for a minute."<br/>
                                   <strong>Child:</strong> "What mom?"<br/>
-                                  <strong>Respondent:</strong> <mark className="bg-yellow-200">"You don't have to be afraid of your dad anymore. Mommy is going to make sure the court knows the truth about him."</mark><br/>
+                                  <strong>Jane Smith:</strong> <mark className="bg-yellow-200">"You don't have to be afraid of your dad anymore. Mommy is going to make sure the court knows the truth about him."</mark><br/>
                                   <strong>Child:</strong> "But I'm not afraid of daddy..."<br/>
-                                  <strong>Respondent:</strong> "You will understand when you're older."
+                                  <strong>Jane Smith:</strong> "You will understand when you're older."
                                 </div>
                               </div>
                             </div>
@@ -207,7 +217,7 @@ export default function ReportPanel() {
                       <div className="bg-gray-50 p-4 rounded">
                         <div className="grid gap-2 text-sm">
                           <div className="flex justify-between">
-                            <span><strong>Exhibit A:</strong> Email - Respondent Declining Psychological Evaluation</span>
+                            <span><strong>Exhibit A:</strong> Email - Jane Smith Declining Psychological Evaluation</span>
                             <span className="text-gray-600">April 10, 2023 | 1 page</span>
                           </div>
                           <div className="flex justify-between">
@@ -249,15 +259,26 @@ export default function ReportPanel() {
                   Export Options
                 </h3>
                 <div className="space-y-3">
-                  <Button className="w-full bg-primary hover:bg-primary/90 text-white font-medium">
+                  <Button 
+                    className="w-full bg-primary hover:bg-primary/90 text-white font-medium"
+                    onClick={() => generateReport("Court PDF Report")}
+                  >
                     <FileText className="mr-2 h-4 w-4" />
                     Export PDF Report
                   </Button>
-                  <Button variant="outline" className="w-full">
+                  <Button 
+                    variant="outline" 
+                    className="w-full"
+                    onClick={() => downloadDocument("Evidence_Package.zip")}
+                  >
                     <Archive className="mr-2 h-4 w-4" />
                     Download Evidence ZIP
                   </Button>
-                  <Button variant="outline" className="w-full">
+                  <Button 
+                    variant="outline" 
+                    className="w-full"
+                    onClick={() => showExhibit("Evidence Log", "document")}
+                  >
                     <List className="mr-2 h-4 w-4" />
                     View Evidence Log
                   </Button>
@@ -304,6 +325,25 @@ export default function ReportPanel() {
           <DocumentIndex />
         </TabsContent>
       </Tabs>
+
+      {/* Modal Components */}
+      <MockExhibitModal 
+        isOpen={activeModal === "exhibit"} 
+        onClose={closeModal} 
+        title={modalProps.title || ""} 
+        type={modalProps.type || ""} 
+      />
+      <MockAnalysisModal 
+        isOpen={activeModal === "analysis"} 
+        onClose={closeModal} 
+        title={modalProps.title || ""} 
+        type={modalProps.type || ""} 
+      />
+      <MockReportModal 
+        isOpen={activeModal === "report"} 
+        onClose={closeModal} 
+        title={modalProps.title || ""} 
+      />
     </motion.div>
   );
 }

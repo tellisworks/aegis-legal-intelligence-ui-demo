@@ -8,8 +8,24 @@ import { mockContradictions, mockMisconduct, mockAlienation } from "@/lib/mock-d
 import TimelineView from "./timeline-view";
 import ValidationInterface from "./validation-interface";
 import ExhibitAnchoredValidation from "./exhibit-anchored-validation";
+import { useMockInteractions } from "@/hooks/use-mock-interactions";
+import { MockExhibitModal, MockAnalysisModal, MockReportModal } from "./mock-output-modals";
 
 export default function ResultsPanel() {
+  const {
+    activeModal,
+    modalProps,
+    showExhibit,
+    showMessageTrail,
+    showCommunicationAnalysis,
+    showTimelineView,
+    showDiscoveryResponse,
+    showEmailThread,
+    downloadDocument,
+    generateReport,
+    closeModal
+  } = useMockInteractions();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -111,11 +127,19 @@ export default function ResultsPanel() {
                     <p className="text-gray-700 mb-2"><strong>Contradicted by:</strong></p>
                     <p className="text-gray-600 mb-3">"{contradiction.contradicted_by}" – {contradiction.source}</p>
                     <div className="flex space-x-3">
-                      <Button size="sm" className="bg-primary text-white hover:bg-primary/90">
+                      <Button 
+                        size="sm" 
+                        className="bg-primary text-white hover:bg-primary/90"
+                        onClick={() => showExhibit("Email - Jane Smith Declining Evaluation", "email")}
+                      >
                         <Link className="mr-2 h-4 w-4" />
                         View Citation
                       </Button>
-                      <Button size="sm" variant="outline">
+                      <Button 
+                        size="sm" 
+                        variant="outline"
+                        onClick={() => downloadDocument("Exhibit A - Email Evidence.pdf")}
+                      >
                         <Download className="mr-2 h-4 w-4" />
                         Export Evidence
                       </Button>
@@ -132,7 +156,7 @@ export default function ResultsPanel() {
                         supportingExhibits: [
                           {
                             exhibit: "Exhibit A",
-                            title: "Email - Respondent Declining Psychological Evaluation", 
+                            title: "Email - Jane Smith Declining Psychological Evaluation", 
                             relevantQuote: "I have decided not to attend the psychological evaluation scheduled for April 15th",
                             pageReference: "Page 3, Line 12"
                           },
@@ -267,7 +291,7 @@ export default function ResultsPanel() {
                           {
                             exhibit: "Exhibit B",
                             title: "Text Message Thread - Unanswered Communications",
-                            relevantQuote: "47 consecutive messages with zero responses from Respondent",
+                            relevantQuote: "47 consecutive messages with zero responses from Jane Smith",
                             pageReference: "Lines 33-49"
                           },
                           {
@@ -378,7 +402,11 @@ export default function ResultsPanel() {
                         </div>
                       ))}
                     </div>
-                    <Button size="sm" className="mt-4 bg-primary text-white hover:bg-primary/90">
+                    <Button 
+                      size="sm" 
+                      className="mt-4 bg-primary text-white hover:bg-primary/90"
+                      onClick={showTimelineView}
+                    >
                       <TrendingUp className="mr-2 h-4 w-4" />
                       View Pattern Timeline
                     </Button>
@@ -424,6 +452,25 @@ export default function ResultsPanel() {
           </TabsContent>
         </Tabs>
       </Card>
+
+      {/* Modal Components */}
+      <MockExhibitModal 
+        isOpen={activeModal === "exhibit"} 
+        onClose={closeModal} 
+        title={modalProps.title || ""} 
+        type={modalProps.type || ""} 
+      />
+      <MockAnalysisModal 
+        isOpen={activeModal === "analysis"} 
+        onClose={closeModal} 
+        title={modalProps.title || ""} 
+        type={modalProps.type || ""} 
+      />
+      <MockReportModal 
+        isOpen={activeModal === "report"} 
+        onClose={closeModal} 
+        title={modalProps.title || ""} 
+      />
     </motion.div>
   );
 }

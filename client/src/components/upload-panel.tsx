@@ -4,6 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import { FileText, Shield, Gavel, CheckCircle, Play, Scale, Users, User, Upload, FolderOpen } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useMockInteractions } from "@/hooks/use-mock-interactions";
+import { MockExhibitModal, MockAnalysisModal, MockReportModal } from "./mock-output-modals";
 
 interface UploadPanelProps {
   onStartAnalysis: () => void;
@@ -21,6 +23,15 @@ export default function UploadPanel({ onStartAnalysis }: UploadPanelProps) {
     { name: "Subpoena_Exhibit_Pack.pdf", size: "5.8 MB", type: "PDF Document", uploaded: true },
     { name: "Email_String_Opposing_Counsel.pdf", size: "892 KB", type: "PDF Document", uploaded: true }
   ]);
+
+  const {
+    activeModal,
+    modalProps,
+    showExhibit,
+    showAnalysis,
+    downloadDocument,
+    closeModal
+  } = useMockInteractions();
 
   return (
     <motion.div
@@ -74,7 +85,11 @@ export default function UploadPanel({ onStartAnalysis }: UploadPanelProps) {
                 </div>
               </motion.div>
             ))}
-            <Button variant="outline" className="w-full border-blue-300 text-blue-700 hover:bg-blue-100">
+            <Button 
+              variant="outline" 
+              className="w-full border-blue-300 text-blue-700 hover:bg-blue-100"
+              onClick={() => showExhibit("Client File Upload", "document")}
+            >
               <FolderOpen className="mr-2 h-4 w-4" />
               Upload Client Files
             </Button>
@@ -118,8 +133,12 @@ export default function UploadPanel({ onStartAnalysis }: UploadPanelProps) {
                 </div>
               </motion.div>
             ))}
-            <Button variant="outline" className="w-full border-red-300 text-red-700 hover:bg-red-100">
-              <FolderOpen className="mr-2 h-4 w-4" />
+            <Button 
+              variant="outline" 
+              className="w-full border-red-300 text-red-700 hover:bg-red-100"
+              onClick={() => showExhibit("Opposing Party File Upload", "discovery")}
+            >
+              <Upload className="mr-2 h-4 w-4" />
               Upload Opposing Party Files
             </Button>
           </div>
@@ -180,7 +199,10 @@ export default function UploadPanel({ onStartAnalysis }: UploadPanelProps) {
         transition={{ delay: 0.5 }}
       >
         <Button 
-          onClick={onStartAnalysis} 
+          onClick={() => {
+            showAnalysis("AI Legal Analysis Starting", "general");
+            setTimeout(() => onStartAnalysis(), 2000);
+          }}
           className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 text-lg font-semibold shadow-lg"
           size="lg"
         >
@@ -191,6 +213,25 @@ export default function UploadPanel({ onStartAnalysis }: UploadPanelProps) {
           Start comprehensive adversarial document analysis
         </p>
       </motion.div>
+
+      {/* Modal Components */}
+      <MockExhibitModal 
+        isOpen={activeModal === "exhibit"} 
+        onClose={closeModal} 
+        title={modalProps.title || ""} 
+        type={modalProps.type || ""} 
+      />
+      <MockAnalysisModal 
+        isOpen={activeModal === "analysis"} 
+        onClose={closeModal} 
+        title={modalProps.title || ""} 
+        type={modalProps.type || ""} 
+      />
+      <MockReportModal 
+        isOpen={activeModal === "report"} 
+        onClose={closeModal} 
+        title={modalProps.title || ""} 
+      />
     </motion.div>
   );
 }
