@@ -56,10 +56,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const validatedData = insertInvitedUserSchema.parse(req.body);
       
-      const existingUser = await storage.getInvitedUserByEmail(validatedData.email);
-      if (existingUser) {
-        return res.status(400).json({ error: "User already invited" });
-      }
+      // Temporarily disabled for testing - allows duplicate emails
+      // const existingUser = await storage.getInvitedUserByEmail(validatedData.email);
+      // if (existingUser) {
+      //   return res.status(400).json({ error: "User already invited" });
+      // }
 
       const user = await storage.createInvitedUser(validatedData);
       
