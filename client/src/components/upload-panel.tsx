@@ -13,6 +13,7 @@ interface UploadPanelProps {
 }
 
 export default function UploadPanel({ onStartAnalysis }: UploadPanelProps) {
+  // UPDATED: 347 pages processed demo with 20 files total
   const [clientFiles, setClientFiles] = useState([
     { name: "Rule_for_Contempt.pdf", size: "2.3 MB", type: "PDF Document", uploaded: true },
     { name: "Exhibit_Packet_A-F.pdf", size: "4.7 MB", type: "PDF Document", uploaded: true },
