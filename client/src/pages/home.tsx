@@ -14,10 +14,10 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState("upload");
   const [showTutorial, setShowTutorial] = useState(false);
   const [analysisStats, setAnalysisStats] = useState({
-    documentsProcessed: 6,
-    contradictionsFound: 1,
-    confidenceScore: 94,
-    timeElapsed: "2.4s"
+    documentsProcessed: 347,
+    contradictionsFound: 23,
+    confidenceScore: 96,
+    timeElapsed: "14.2s"
   });
 
   const handleStartAnalysis = () => {

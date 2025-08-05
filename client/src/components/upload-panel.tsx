@@ -16,13 +16,27 @@ export default function UploadPanel({ onStartAnalysis }: UploadPanelProps) {
   const [clientFiles, setClientFiles] = useState([
     { name: "Rule_for_Contempt.pdf", size: "2.3 MB", type: "PDF Document", uploaded: true },
     { name: "Exhibit_Packet_A-F.pdf", size: "4.7 MB", type: "PDF Document", uploaded: true },
-    { name: "Timeline_Statement.docx", size: "1.2 MB", type: "Word Document", uploaded: true }
+    { name: "Timeline_Statement.docx", size: "1.2 MB", type: "Word Document", uploaded: true },
+    { name: "Text_Messages_Archive.pdf", size: "12.4 MB", type: "PDF Document", uploaded: true },
+    { name: "Email_Communications_2023.pdf", size: "8.9 MB", type: "PDF Document", uploaded: true },
+    { name: "School_Records_Bundle.pdf", size: "6.2 MB", type: "PDF Document", uploaded: true },
+    { name: "Medical_Records_Complete.pdf", size: "15.1 MB", type: "PDF Document", uploaded: true },
+    { name: "Financial_Documents_Pack.pdf", size: "9.3 MB", type: "PDF Document", uploaded: true },
+    { name: "Therapy_Session_Notes.pdf", size: "4.8 MB", type: "PDF Document", uploaded: true },
+    { name: "Calendar_Screenshots.pdf", size: "3.5 MB", type: "PDF Document", uploaded: true }
   ]);
 
   const [opposingFiles, setOpposingFiles] = useState([
     { name: "Opposing_Interrogatory_Responses.pdf", size: "3.1 MB", type: "PDF Document", uploaded: true },
     { name: "Subpoena_Exhibit_Pack.pdf", size: "5.8 MB", type: "PDF Document", uploaded: true },
-    { name: "Email_String_Opposing_Counsel.pdf", size: "892 KB", type: "PDF Document", uploaded: true }
+    { name: "Email_String_Opposing_Counsel.pdf", size: "892 KB", type: "PDF Document", uploaded: true },
+    { name: "Discovery_Production_Set_1-3.pdf", size: "18.7 MB", type: "PDF Document", uploaded: true },
+    { name: "Deposition_Transcripts_Bundle.pdf", size: "22.1 MB", type: "PDF Document", uploaded: true },
+    { name: "Banking_Records_Response.pdf", size: "11.4 MB", type: "PDF Document", uploaded: true },
+    { name: "Phone_Records_Complete.pdf", size: "7.8 MB", type: "PDF Document", uploaded: true },
+    { name: "Social_Media_Evidence.pdf", size: "9.2 MB", type: "PDF Document", uploaded: true },
+    { name: "Witness_Statements_Collected.pdf", size: "6.5 MB", type: "PDF Document", uploaded: true },
+    { name: "Property_Valuation_Reports.pdf", size: "4.9 MB", type: "PDF Document", uploaded: true }
   ]);
 
   const {
@@ -158,7 +172,7 @@ export default function UploadPanel({ onStartAnalysis }: UploadPanelProps) {
                 Adversarial Analysis Ready
               </h3>
               <p className="text-sm text-gray-600 mt-1">
-                {clientFiles.length + opposingFiles.length} documents uploaded for cross-analysis
+                {clientFiles.length + opposingFiles.length} documents uploaded • 347 pages processed • Ready for AI analysis
               </p>
             </div>
             <div className="text-right">

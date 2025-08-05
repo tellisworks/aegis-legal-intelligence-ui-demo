@@ -205,7 +205,7 @@ export function RealtimeStats({ documentsProcessed, contradictionsFound, confide
       className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6"
     >
       <Card className="p-4 text-center">
-        <div className="text-2xl font-bold text-blue-600">{documentsProcessed}</div>
+        <div className="text-2xl font-bold text-blue-600">{documentsProcessed.toLocaleString()}</div>
         <div className="text-xs text-gray-600">Documents Processed</div>
       </Card>
       <Card className="p-4 text-center">
