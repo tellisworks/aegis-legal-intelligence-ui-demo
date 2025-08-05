@@ -85,11 +85,20 @@ export default function AdminInterface() {
 
   const copyToClipboard = async (text: string, fieldName: string) => {
     try {
-      await navigator.clipboard.writeText(text);
+      // Create a temporary textarea to preserve formatting
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      
       setCopiedField(fieldName);
       toast({
         title: "Copied!",
-        description: `${fieldName} copied to clipboard`,
+        description: `${fieldName} copied to clipboard with formatting preserved`,
         variant: "default",
       });
       setTimeout(() => setCopiedField(null), 2000);
@@ -224,6 +233,9 @@ export default function AdminInterface() {
               {/* Email Template */}
               <div className="space-y-2">
                 <Label className="text-sm font-medium">Email Template</Label>
+                <p className="text-xs text-muted-foreground mb-2">
+                  Tip: If formatting is lost when pasting, try Ctrl+Shift+V (Windows) or Cmd+Shift+V (Mac) for "Paste as Plain Text"
+                </p>
                 <Textarea
                   value={`Subject: Invitation to the Aegis Legal Intelligence Demo
 
