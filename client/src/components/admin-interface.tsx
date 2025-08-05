@@ -211,29 +211,41 @@ export default function AdminInterface() {
                 <Textarea
                   value={`Hi ${inviteResult.name},
 
-You've been invited to view the Aegis Legal Intelligence demo - our AI-powered legal analysis platform.
+You've been invited to view the Aegis Legal Intelligence demo - our AI-powered legal analysis platform that helps attorneys identify contradictions, misconduct patterns, and parental alienation behaviors in family law cases.
 
 Click here to access: ${inviteResult.inviteUrl}
 
 Or enter this invite code: ${inviteResult.inviteCode}
 
-Best regards`}
+This interactive demo showcases how our system anchors all AI outputs to specific exhibits and requires attorney validation to eliminate hallucination risks - making it court-defensible.
+
+If you have any questions or suggestions, please feel free to email me at ellistw@hotmail.com
+
+Best regards,
+Tom Ellis
+Founder`}
                   readOnly
                   className="text-sm resize-none"
-                  rows={8}
+                  rows={12}
                 />
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={() => copyToClipboard(`Hi ${inviteResult.name},
 
-You've been invited to view the Aegis Legal Intelligence demo - our AI-powered legal analysis platform.
+You've been invited to view the Aegis Legal Intelligence demo - our AI-powered legal analysis platform that helps attorneys identify contradictions, misconduct patterns, and parental alienation behaviors in family law cases.
 
 Click here to access: ${inviteResult.inviteUrl}
 
 Or enter this invite code: ${inviteResult.inviteCode}
 
-Best regards`, "Email Template")}
+This interactive demo showcases how our system anchors all AI outputs to specific exhibits and requires attorney validation to eliminate hallucination risks - making it court-defensible.
+
+If you have any questions or suggestions, please feel free to email me at ellistw@hotmail.com
+
+Best regards,
+Tom Ellis
+Founder`, "Email Template")}
                 >
                   {copiedField === "Email Template" ? (
                     <>
