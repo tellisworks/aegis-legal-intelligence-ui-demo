@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
-import { Upload, Cog, Search, FileText, CheckCircle } from "lucide-react";
+import { Upload, Cog, Search, FileText, CheckCircle, UserPlus } from "lucide-react";
 import UploadPanel from "@/components/upload-panel";
 import AnalysisPhase from "@/components/analysis-phase";
 import ResultsPanel from "@/components/results-panel";
 import ReportPanel from "@/components/report-panel";
 import ProfessionalHeader from "@/components/professional-header";
 import { RealtimeStats, TutorialOverlay } from "@/components/realistic-demo-enhancements";
+import AdminInterface from "@/components/admin-interface";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("upload");
@@ -84,6 +85,13 @@ export default function Home() {
                     <FileText className="mr-2 h-4 w-4" />
                     Report
                   </TabsTrigger>
+                  <TabsTrigger 
+                    value="admin"
+                    className="py-2 px-1 border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:text-primary text-gray-500 font-medium text-sm whitespace-nowrap bg-transparent"
+                  >
+                    <UserPlus className="mr-2 h-4 w-4" />
+                    Invite Users
+                  </TabsTrigger>
                 </div>
               </TabsList>
               
@@ -117,6 +125,10 @@ export default function Home() {
 
           <TabsContent value="report" className="mt-0">
             <ReportPanel />
+          </TabsContent>
+
+          <TabsContent value="admin" className="mt-0">
+            <AdminInterface />
           </TabsContent>
         </Tabs>
       </div>
