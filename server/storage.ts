@@ -21,6 +21,7 @@ export interface IStorage {
   logAccess(userId: string, ipAddress?: string, userAgent?: string): Promise<AccessLog>;
   updateUserAccess(userId: string): Promise<void>;
   getRecentAccessLogs(): Promise<AccessLog[]>;
+  getUniqueLoggedInUserCount(): Promise<number>;
 }
 
 // Database storage implementation
@@ -106,6 +107,7 @@ export class DatabaseStorage implements IStorage {
   }
 
   async updateUserAccess(userId: string): Promise<void> {
+    // Always update to current timestamp, even for returning users
     await db.update(invitedUsers)
       .set({ accessedAt: new Date() })
       .where(eq(invitedUsers.id, userId));
@@ -113,6 +115,11 @@ export class DatabaseStorage implements IStorage {
 
   async getRecentAccessLogs(): Promise<AccessLog[]> {
     return await db.select().from(accessLogs).limit(50);
+  }
+
+  async getUniqueLoggedInUserCount(): Promise<number> {
+    const result = await db.selectDistinct({ userId: accessLogs.userId }).from(accessLogs);
+    return result.length;
   }
 }
 

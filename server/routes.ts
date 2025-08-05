@@ -23,12 +23,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(401).json({ error: "Invalid or expired invite code" });
       }
 
-      // Update accessed_at timestamp on login
+      // Update accessed_at timestamp on every login (not just first)
       await storage.updateUserAccess(user.id);
 
       const session = await storage.createSession(user.id);
       
-      // Log the access for admin tracking
+      // Log each access for admin tracking
       await storage.logAccess(user.id, req.ip, req.get('User-Agent'));
       
       // Set secure cookie
@@ -89,10 +89,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const users = await storage.getAllInvitedUsers();
       const accessLogs = await storage.getRecentAccessLogs();
+      const uniqueLoggedInUsers = await storage.getUniqueLoggedInUserCount();
       
       res.json({
         totalInvited: users.length,
-        totalAccessed: users.filter(u => u.accessedAt).length,
+        totalAccessed: uniqueLoggedInUsers,
         users: users.map(u => ({
           name: u.name,
           email: u.email,
