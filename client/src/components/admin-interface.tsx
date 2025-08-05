@@ -209,24 +209,26 @@ export default function AdminInterface() {
               <div className="space-y-2">
                 <Label className="text-sm font-medium">Email Template</Label>
                 <Textarea
-                  value={`Hi ${inviteResult.name},
+                  value={`Subject: Invitation to the Aegis Legal Intelligence Demo
 
-You've been invited to view the Aegis Legal Intelligence demo - imagine taking over 1,000 documents from your client and opposing counsel and having them organized, indexed and analyzed with the push of a button! 
+Hi ${inviteResult.name},
 
-Our AI-powered legal analysis platform helps attorneys identify contradictions, misconduct patterns, and parental alienation behaviors in family law cases.
+Imagine instantly organizing, indexing, and analyzing over 1,000 documents from a family law case with the push of a button. That's the power of the Aegis Legal Intelligence platform.
+
+Our AI-powered system helps family law attorneys quickly uncover key contradictions and misconduct patterns buried in case documents, giving you a crucial advantage.
 
 🔗 CLICK HERE TO ACCESS THE DEMO:
 ${inviteResult.inviteUrl}
 
 Or visit the demo and enter this invite code: ${inviteResult.inviteCode}
 
-This interactive demo showcases how our system anchors all AI outputs to specific exhibits and requires attorney validation to eliminate hallucination risks - making it court-defensible.
+This interactive demo will show you how our system anchors all AI outputs to specific exhibits and requires attorney validation, eliminating hallucination risks and making it fully court-defensible.
 
-If you have any questions or suggestions, please feel free to email me at ellistw@hotmail.com
+If you have any questions or would like to discuss how Aegis can help your practice, please feel free to email me at ellistw@hotmail.com.
 
 Best regards,
 Tom Ellis
-Founder`}
+Founder, Aegis Legal Intelligence`}
                   readOnly
                   className="text-sm resize-none"
                   rows={14}
@@ -234,24 +236,26 @@ Founder`}
                 <Button
                   variant="outline"
                   size="sm"
-                  onClick={() => copyToClipboard(`Hi ${inviteResult.name},
+                  onClick={() => copyToClipboard(`Subject: Invitation to the Aegis Legal Intelligence Demo
 
-You've been invited to view the Aegis Legal Intelligence demo - imagine taking over 1,000 documents from your client and opposing counsel and having them organized, indexed and analyzed with the push of a button! 
+Hi ${inviteResult.name},
 
-Our AI-powered legal analysis platform helps attorneys identify contradictions, misconduct patterns, and parental alienation behaviors in family law cases.
+Imagine instantly organizing, indexing, and analyzing over 1,000 documents from a family law case with the push of a button. That's the power of the Aegis Legal Intelligence platform.
+
+Our AI-powered system helps family law attorneys quickly uncover key contradictions and misconduct patterns buried in case documents, giving you a crucial advantage.
 
 🔗 CLICK HERE TO ACCESS THE DEMO:
 ${inviteResult.inviteUrl}
 
 Or visit the demo and enter this invite code: ${inviteResult.inviteCode}
 
-This interactive demo showcases how our system anchors all AI outputs to specific exhibits and requires attorney validation to eliminate hallucination risks - making it court-defensible.
+This interactive demo will show you how our system anchors all AI outputs to specific exhibits and requires attorney validation, eliminating hallucination risks and making it fully court-defensible.
 
-If you have any questions or suggestions, please feel free to email me at ellistw@hotmail.com
+If you have any questions or would like to discuss how Aegis can help your practice, please feel free to email me at ellistw@hotmail.com.
 
 Best regards,
 Tom Ellis
-Founder`, "Email Template")}
+Founder, Aegis Legal Intelligence`, "Email Template")}
                 >
                   {copiedField === "Email Template" ? (
                     <>
