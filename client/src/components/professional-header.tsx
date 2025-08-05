@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Shield, Zap, Users, HelpCircle, Settings } from "lucide-react";
+import { Shield, Zap, Users, HelpCircle, Settings, LogOut } from "lucide-react";
+import { useAuth } from "@/hooks/use-auth";
 
 export default function ProfessionalHeader() {
+  const { user, logout } = useAuth();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: -20 }}
@@ -41,15 +44,34 @@ export default function ProfessionalHeader() {
             </div>
           </div>
 
-          <div className="flex space-x-2">
-            <Button variant="ghost" size="sm" className="text-white hover:bg-white/10">
-              <HelpCircle className="w-4 h-4 mr-2" />
-              Help
-            </Button>
-            <Button variant="ghost" size="sm" className="text-white hover:bg-white/10">
-              <Settings className="w-4 h-4 mr-2" />
-              Settings
-            </Button>
+          <div className="flex items-center space-x-4">
+            {/* User Info */}
+            {user && (
+              <div className="text-right text-sm">
+                <div className="text-blue-100">{user.name}</div>
+                <div className="text-xs text-blue-200">{user.email}</div>
+              </div>
+            )}
+            
+            <div className="flex space-x-2">
+              <Button variant="ghost" size="sm" className="text-white hover:bg-white/10">
+                <HelpCircle className="w-4 h-4 mr-2" />
+                Help
+              </Button>
+              <Button variant="ghost" size="sm" className="text-white hover:bg-white/10">
+                <Settings className="w-4 h-4 mr-2" />
+                Settings
+              </Button>
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className="text-white hover:bg-white/10"
+                onClick={logout}
+              >
+                <LogOut className="w-4 h-4 mr-2" />
+                Logout
+              </Button>
+            </div>
           </div>
         </div>
       </div>
