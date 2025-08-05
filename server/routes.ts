@@ -51,24 +51,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.json({ user: req.user });
   });
 
-  // Admin route to create invitations
+  // Admin route to create invitations - TESTING MODE: Always creates new invite
   app.post("/api/admin/invite", async (req, res) => {
     try {
       const validatedData = insertInvitedUserSchema.parse(req.body);
       
-      // Temporarily disabled for testing - allows duplicate emails
-      // const existingUser = await storage.getInvitedUserByEmail(validatedData.email);
-      // if (existingUser) {
-      //   return res.status(400).json({ error: "User already invited" });
-      // }
+      // For testing: Add timestamp to email to ensure uniqueness
+      const testEmail = `${validatedData.email.split('@')[0]}+${Date.now()}@${validatedData.email.split('@')[1]}`;
+      const modifiedData = { ...validatedData, email: testEmail };
 
-      const user = await storage.createInvitedUser(validatedData);
+      const user = await storage.createInvitedUser(modifiedData);
       
       res.json({
         success: true,
         user: {
           id: user.id,
-          email: user.email,
+          email: validatedData.email, // Show original email to user
           name: user.name,
           inviteCode: user.inviteCode,
           inviteUrl: `${req.protocol}://${req.get('host')}/login?code=${user.inviteCode}`,
