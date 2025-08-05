@@ -10,6 +10,13 @@ The system follows a tabbed workflow: Upload documents → Analyze → Review Re
 
 Preferred communication style: Simple, everyday language.
 
+## Recent Lessons Learned
+
+- The invitation system works perfectly - unlimited duplicate emails for testing
+- Professional email templates are ready with Tom Ellis signature and business messaging
+- Sometimes improving working features leads to frustrating loops - focus on what works
+- Demo shows comprehensive legal document analysis with realistic file types and analysis results
+
 ## System Architecture
 
 ### Frontend Architecture
