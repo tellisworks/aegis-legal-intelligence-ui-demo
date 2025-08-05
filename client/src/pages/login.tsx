@@ -104,7 +104,7 @@ export default function Login() {
           <CardHeader className="space-y-1">
             <CardTitle className="text-xl text-center">Access Demo</CardTitle>
             <CardDescription className="text-center">
-              Enter your invite code to access the legal AI platform
+              Imagine analyzing 500 legal documents with the push of a button. Enter your invite code to access the demo.
             </CardDescription>
           </CardHeader>
           <CardContent>
