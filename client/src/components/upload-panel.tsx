@@ -58,7 +58,7 @@ export default function UploadPanel({ onStartAnalysis }: UploadPanelProps) {
       className="space-y-8"
     >
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">📤 Upload Documents for Analysis</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">📤 Upload Documents for Analysis (347+ Pages)</h2>
         <p className="text-gray-600">Upload both your client's materials and opposing party's discovery for comprehensive adversarial analysis.</p>
       </div>
 
@@ -172,7 +172,7 @@ export default function UploadPanel({ onStartAnalysis }: UploadPanelProps) {
                 Adversarial Analysis Ready
               </h3>
               <p className="text-sm text-gray-600 mt-1">
-                {clientFiles.length + opposingFiles.length} documents uploaded • 347 pages processed • Ready for AI analysis • Updated: {new Date().toLocaleTimeString()}
+                {clientFiles.length + opposingFiles.length} documents uploaded • 347 pages processed • Ready for AI analysis
               </p>
             </div>
             <div className="text-right">

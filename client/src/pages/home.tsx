@@ -18,7 +18,7 @@ export default function Home() {
     contradictionsFound: 23,
     confidenceScore: 96,
     timeElapsed: "14.2s",
-    lastUpdated: Date.now() // Force component refresh
+
   });
 
   const handleStartAnalysis = () => {
