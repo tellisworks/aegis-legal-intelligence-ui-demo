@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -10,8 +11,10 @@ import ValidationInterface from "./validation-interface";
 import ExhibitAnchoredValidation from "./exhibit-anchored-validation";
 import { useMockInteractions } from "@/hooks/use-mock-interactions";
 import { MockExhibitModal, MockAnalysisModal, MockReportModal } from "./mock-output-modals";
+import ExecutiveOverview from "./executive-overview";
 
 export default function ResultsPanel() {
+  const [showOverview, setShowOverview] = useState(true);
   const {
     activeModal,
     modalProps,
@@ -25,6 +28,19 @@ export default function ResultsPanel() {
     generateReport,
     closeModal
   } = useMockInteractions();
+
+  // Show executive overview first, then validation interface
+  if (showOverview) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <ExecutiveOverview onProceedToValidation={() => setShowOverview(false)} />
+      </motion.div>
+    );
+  }
 
   return (
     <motion.div

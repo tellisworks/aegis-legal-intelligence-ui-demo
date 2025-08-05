@@ -18,6 +18,14 @@ Preferred communication style: Simple, everyday language.
 - Demo shows comprehensive legal document analysis with realistic file types and analysis results
 - Avoid endless technical refinements when core functionality serves business needs
 
+## Recent Updates
+
+- **Executive Overview Summary** (Aug 5, 2025): Added comprehensive executive briefing that appears first in Results tab
+  - Shows key findings, critical contradictions, behavior patterns, and document statistics
+  - Emphasizes "Preliminary AI Analysis - Attorney validation required"
+  - Leads users to validation section with "Proceed to Validation" button
+  - Professional executive briefing style with clear sections and visual hierarchy
+
 ## System Architecture
 
 ### Frontend Architecture
