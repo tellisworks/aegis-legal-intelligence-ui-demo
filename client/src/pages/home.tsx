@@ -13,12 +13,12 @@ import AdminInterface from "@/components/admin-interface";
 export default function Home() {
   const [activeTab, setActiveTab] = useState("upload");
   const [showTutorial, setShowTutorial] = useState(false);
-  const [analysisStats, setAnalysisStats] = useState({
+  // Enhanced analysis stats for 347 pages demo
+  const [analysisStats] = useState({
     documentsProcessed: 347,
     contradictionsFound: 23,
     confidenceScore: 96,
-    timeElapsed: "14.2s",
-
+    timeElapsed: "14.2s"
   });
 
   const handleStartAnalysis = () => {
