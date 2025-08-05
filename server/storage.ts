@@ -19,6 +19,8 @@ export interface IStorage {
   
   // Access logging
   logAccess(userId: string, ipAddress?: string, userAgent?: string): Promise<AccessLog>;
+  updateUserAccess(userId: string): Promise<void>;
+  getRecentAccessLogs(): Promise<AccessLog[]>;
 }
 
 // Database storage implementation
@@ -101,6 +103,16 @@ export class DatabaseStorage implements IStorage {
       })
       .returning();
     return log;
+  }
+
+  async updateUserAccess(userId: string): Promise<void> {
+    await db.update(invitedUsers)
+      .set({ accessedAt: new Date() })
+      .where(eq(invitedUsers.id, userId));
+  }
+
+  async getRecentAccessLogs(): Promise<AccessLog[]> {
+    return await db.select().from(accessLogs).limit(50);
   }
 }
 

@@ -5,9 +5,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import { Copy, UserPlus, Mail, ExternalLink, Check, RefreshCw } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Copy, UserPlus, Mail, ExternalLink, Check, RefreshCw, Activity, Users, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
+import { useQuery } from "@tanstack/react-query";
 
 interface InviteResult {
   id: string;
@@ -15,6 +17,19 @@ interface InviteResult {
   name: string;
   inviteCode: string;
   inviteUrl: string;
+}
+
+interface ActivityData {
+  totalInvited: number;
+  totalAccessed: number;
+  users: {
+    name: string;
+    email: string;
+    invitedAt: string;
+    lastAccessed: string | null;
+    hasLoggedIn: boolean;
+  }[];
+  recentActivity: any[];
 }
 
 export default function AdminInterface() {
@@ -25,6 +40,12 @@ export default function AdminInterface() {
   const [copiedField, setCopiedField] = useState<string | null>(null);
   const [lastRefreshed, setLastRefreshed] = useState(new Date());
   const { toast } = useToast();
+
+  // Fetch activity data
+  const { data: activityData, isLoading: activityLoading, refetch: refetchActivity } = useQuery<ActivityData>({
+    queryKey: ["/api/admin/activity"],
+    refetchInterval: 30000, // Refresh every 30 seconds
+  });
 
   // Force component to use fresh data
   useEffect(() => {
@@ -112,9 +133,22 @@ export default function AdminInterface() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 space-y-6">
-      {/* Create Invitation */}
-      <Card>
+    <div className="max-w-4xl mx-auto p-6 space-y-6">
+      <Tabs defaultValue="invite" className="w-full">
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="invite" className="flex items-center gap-2">
+            <UserPlus className="h-4 w-4" />
+            Create Invitations
+          </TabsTrigger>
+          <TabsTrigger value="activity" className="flex items-center gap-2">
+            <Activity className="h-4 w-4" />
+            Login Activity
+          </TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="invite" className="space-y-6">
+          {/* Create Invitation */}
+          <Card>
         <CardHeader>
           <div className="flex justify-between items-start">
             <div>
@@ -332,6 +366,124 @@ Founder, Aegis Legal Intelligence`, "Email Template")}
           </div>
         </CardContent>
       </Card>
+        </TabsContent>
+
+        <TabsContent value="activity" className="space-y-6">
+          {/* Activity Dashboard */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center space-x-2">
+                <Activity className="h-5 w-5" />
+                <span>Login Activity Dashboard</span>
+              </CardTitle>
+              <CardDescription>
+                Track who has logged into your Aegis Legal Intelligence demo
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              {activityLoading ? (
+                <div className="flex items-center justify-center py-8">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+                </div>
+              ) : activityData ? (
+                <div className="space-y-6">
+                  {/* Stats Overview */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <Card className="bg-blue-50 border-blue-200">
+                      <CardContent className="p-4">
+                        <div className="flex items-center space-x-2">
+                          <Users className="h-5 w-5 text-blue-600" />
+                          <div>
+                            <div className="text-2xl font-bold text-blue-900">{activityData.totalInvited}</div>
+                            <div className="text-sm text-blue-600">Total Invited</div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                    <Card className="bg-green-50 border-green-200">
+                      <CardContent className="p-4">
+                        <div className="flex items-center space-x-2">
+                          <Check className="h-5 w-5 text-green-600" />
+                          <div>
+                            <div className="text-2xl font-bold text-green-900">{activityData.totalAccessed}</div>
+                            <div className="text-sm text-green-600">Have Logged In</div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                    <Card className="bg-orange-50 border-orange-200">
+                      <CardContent className="p-4">
+                        <div className="flex items-center space-x-2">
+                          <Clock className="h-5 w-5 text-orange-600" />
+                          <div>
+                            <div className="text-2xl font-bold text-orange-900">
+                              {Math.round((activityData.totalAccessed / activityData.totalInvited) * 100) || 0}%
+                            </div>
+                            <div className="text-sm text-orange-600">Login Rate</div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+
+                  {/* User List */}
+                  <div>
+                    <h3 className="text-lg font-semibold mb-4">User Activity</h3>
+                    <div className="space-y-3">
+                      {activityData.users.map((user, index) => (
+                        <div key={index} className="flex items-center justify-between p-4 border rounded-lg bg-white">
+                          <div className="flex items-center space-x-3">
+                            <div className={`w-3 h-3 rounded-full ${user.hasLoggedIn ? 'bg-green-500' : 'bg-gray-300'}`}></div>
+                            <div>
+                              <div className="font-medium">{user.name}</div>
+                              <div className="text-sm text-gray-600">{user.email}</div>
+                            </div>
+                          </div>
+                          <div className="text-right">
+                            <div className="text-sm">
+                              {user.hasLoggedIn ? (
+                                <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
+                                  ✓ Logged In
+                                </Badge>
+                              ) : (
+                                <Badge variant="outline" className="bg-gray-50 text-gray-600">
+                                  Invited Only
+                                </Badge>
+                              )}
+                            </div>
+                            <div className="text-xs text-gray-500 mt-1">
+                              {user.hasLoggedIn 
+                                ? `Last access: ${new Date(user.lastAccessed!).toLocaleString()}`
+                                : `Invited: ${new Date(user.invitedAt).toLocaleString()}`
+                              }
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Refresh Button */}
+                  <div className="flex justify-center">
+                    <Button
+                      variant="outline"
+                      onClick={() => refetchActivity()}
+                      className="flex items-center space-x-2"
+                    >
+                      <RefreshCw className="h-4 w-4" />
+                      <span>Refresh Activity</span>
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                <div className="text-center py-8 text-gray-500">
+                  Failed to load activity data
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
     </div>
   );
 }

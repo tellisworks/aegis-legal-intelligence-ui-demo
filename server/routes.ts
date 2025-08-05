@@ -23,7 +23,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(401).json({ error: "Invalid or expired invite code" });
       }
 
+      // Update accessed_at timestamp on login
+      await storage.updateUserAccess(user.id);
+
       const session = await storage.createSession(user.id);
+      
+      // Log the access for admin tracking
+      await storage.logAccess(user.id, req.ip, req.get('User-Agent'));
       
       // Set secure cookie
       res.cookie('authToken', session.token, {
@@ -75,6 +81,37 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error('Invite creation error:', error);
       res.status(500).json({ error: "Failed to create invitation" });
+    }
+  });
+
+  // Admin route to view login activity
+  app.get("/api/admin/activity", async (req, res) => {
+    try {
+      const users = await storage.getAllInvitedUsers();
+      const accessLogs = await storage.getRecentAccessLogs();
+      
+      res.json({
+        totalInvited: users.length,
+        totalAccessed: users.filter(u => u.accessedAt).length,
+        users: users.map(u => ({
+          name: u.name,
+          email: u.email,
+          invitedAt: u.createdAt,
+          lastAccessed: u.accessedAt,
+          hasLoggedIn: !!u.accessedAt
+        })).sort((a, b) => {
+          if (a.lastAccessed && b.lastAccessed) {
+            return new Date(b.lastAccessed).getTime() - new Date(a.lastAccessed).getTime();
+          }
+          if (a.lastAccessed && !b.lastAccessed) return -1;
+          if (!a.lastAccessed && b.lastAccessed) return 1;
+          return new Date(b.invitedAt).getTime() - new Date(a.invitedAt).getTime();
+        }),
+        recentActivity: accessLogs
+      });
+    } catch (error) {
+      console.error('Activity fetch error:', error);
+      res.status(500).json({ error: "Failed to fetch activity" });
     }
   });
 
