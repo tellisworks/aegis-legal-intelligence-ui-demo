@@ -25,33 +25,14 @@ export interface IStorage {
 export class DatabaseStorage implements IStorage {
   async createInvitedUser(insertUser: InsertInvitedUser): Promise<InvitedUser> {
     const inviteCode = crypto.randomBytes(16).toString('hex');
-    try {
-      const [user] = await db
-        .insert(invitedUsers)
-        .values({
-          ...insertUser,
-          inviteCode,
-        })
-        .returning();
-      return user;
-    } catch (error: any) {
-      // Handle database constraint errors gracefully
-      if (error.code === '23505' || error.message?.includes('duplicate')) {
-        console.log('Duplicate email detected, allowing for testing purposes');
-        // For testing: modify email slightly to avoid constraint
-        const modifiedEmail = `${insertUser.email.split('@')[0]}+${Date.now()}@${insertUser.email.split('@')[1]}`;
-        const [user] = await db
-          .insert(invitedUsers)
-          .values({
-            ...insertUser,
-            email: modifiedEmail,
-            inviteCode,
-          })
-          .returning();
-        return user;
-      }
-      throw error;
-    }
+    const [user] = await db
+      .insert(invitedUsers)
+      .values({
+        ...insertUser,
+        inviteCode,
+      })
+      .returning();
+    return user;
   }
 
   async getInvitedUserByEmail(email: string): Promise<InvitedUser | undefined> {

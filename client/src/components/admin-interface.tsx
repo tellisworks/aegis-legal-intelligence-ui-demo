@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import { Copy, UserPlus, Mail, ExternalLink, Check } from "lucide-react";
+import { Copy, UserPlus, Mail, ExternalLink, Check, RefreshCw } from "lucide-react";
 import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
 
@@ -23,7 +23,13 @@ export default function AdminInterface() {
   const [isLoading, setIsLoading] = useState(false);
   const [inviteResult, setInviteResult] = useState<InviteResult | null>(null);
   const [copiedField, setCopiedField] = useState<string | null>(null);
+  const [lastRefreshed, setLastRefreshed] = useState(new Date());
   const { toast } = useToast();
+
+  // Force component to use fresh data
+  useEffect(() => {
+    setLastRefreshed(new Date());
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,10 +44,12 @@ export default function AdminInterface() {
 
     setIsLoading(true);
     try {
-      const response = await fetch('/api/admin/invite', {
+      // Add cache-busting timestamp to ensure fresh request
+      const response = await fetch(`/api/admin/invite?t=${Date.now()}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Cache-Control': 'no-cache',
         },
         body: JSON.stringify({ email, name }),
       });
@@ -99,13 +107,21 @@ export default function AdminInterface() {
       {/* Create Invitation */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center space-x-2">
-            <UserPlus className="h-5 w-5" />
-            <span>Create Invitation</span>
-          </CardTitle>
-          <CardDescription>
-            Generate secure invite codes for non-Replit users
-          </CardDescription>
+          <div className="flex justify-between items-start">
+            <div>
+              <CardTitle className="flex items-center space-x-2">
+                <UserPlus className="h-5 w-5" />
+                <span>Create Invitation</span>
+              </CardTitle>
+              <CardDescription>
+                Generate secure invite codes for non-Replit users
+              </CardDescription>
+            </div>
+            <div className="text-xs text-muted-foreground flex items-center gap-1">
+              <RefreshCw className="h-3 w-3" />
+              <span>Updated: {lastRefreshed.toLocaleTimeString()}</span>
+            </div>
+          </div>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
