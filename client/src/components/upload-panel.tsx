@@ -172,7 +172,7 @@ export default function UploadPanel({ onStartAnalysis }: UploadPanelProps) {
                 Adversarial Analysis Ready
               </h3>
               <p className="text-sm text-gray-600 mt-1">
-                {clientFiles.length + opposingFiles.length} documents uploaded • 347 pages processed • Ready for AI analysis
+                {clientFiles.length + opposingFiles.length} documents uploaded • 347 pages processed • Ready for AI analysis • Updated: {new Date().toLocaleTimeString()}
               </p>
             </div>
             <div className="text-right">

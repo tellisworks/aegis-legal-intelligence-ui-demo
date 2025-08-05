@@ -17,7 +17,8 @@ export default function Home() {
     documentsProcessed: 347,
     contradictionsFound: 23,
     confidenceScore: 96,
-    timeElapsed: "14.2s"
+    timeElapsed: "14.2s",
+    lastUpdated: Date.now() // Force component refresh
   });
 
   const handleStartAnalysis = () => {
