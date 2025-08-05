@@ -213,9 +213,10 @@ export default function AdminInterface() {
 
 You've been invited to view the Aegis Legal Intelligence demo - our AI-powered legal analysis platform that helps attorneys identify contradictions, misconduct patterns, and parental alienation behaviors in family law cases.
 
-Click here to access: ${inviteResult.inviteUrl}
+🔗 CLICK HERE TO ACCESS THE DEMO:
+${inviteResult.inviteUrl}
 
-Or enter this invite code: ${inviteResult.inviteCode}
+Or visit the demo and enter this invite code: ${inviteResult.inviteCode}
 
 This interactive demo showcases how our system anchors all AI outputs to specific exhibits and requires attorney validation to eliminate hallucination risks - making it court-defensible.
 
@@ -235,9 +236,10 @@ Founder`}
 
 You've been invited to view the Aegis Legal Intelligence demo - our AI-powered legal analysis platform that helps attorneys identify contradictions, misconduct patterns, and parental alienation behaviors in family law cases.
 
-Click here to access: ${inviteResult.inviteUrl}
+🔗 CLICK HERE TO ACCESS THE DEMO:
+${inviteResult.inviteUrl}
 
-Or enter this invite code: ${inviteResult.inviteCode}
+Or visit the demo and enter this invite code: ${inviteResult.inviteCode}
 
 This interactive demo showcases how our system anchors all AI outputs to specific exhibits and requires attorney validation to eliminate hallucination risks - making it court-defensible.
 
