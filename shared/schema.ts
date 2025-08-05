@@ -15,7 +15,7 @@ export const sessions = pgTable("sessions", {
 // Invited users table - controls who can access the demo
 export const invitedUsers = pgTable("invited_users", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  email: text("email").notNull().unique(),
+  email: text("email").notNull(), // .unique() temporarily removed for testing
   name: text("name").notNull(),
   inviteCode: text("invite_code").notNull().unique(),
   isActive: boolean("is_active").default(true),
