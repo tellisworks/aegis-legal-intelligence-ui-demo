@@ -40,8 +40,9 @@ const DEMO_OPPOSING_FILES = [
 ];
 
 export default function UploadPanel({ onStartAnalysis }: UploadPanelProps) {
-  const [clientFiles] = useState(DEMO_CLIENT_FILES);
-  const [opposingFiles] = useState(DEMO_OPPOSING_FILES);
+  // Force fresh state - 347 pages processed
+  const clientFiles = DEMO_CLIENT_FILES;
+  const opposingFiles = DEMO_OPPOSING_FILES;
 
   const {
     activeModal,

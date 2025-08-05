@@ -113,7 +113,7 @@ export default function Home() {
 
           {/* Tab Content */}
           <TabsContent value="upload" className="mt-0">
-            <UploadPanel onStartAnalysis={handleStartAnalysis} />
+            <UploadPanel key="updated-347-pages" onStartAnalysis={handleStartAnalysis} />
           </TabsContent>
 
           <TabsContent value="analyze" className="mt-0">
