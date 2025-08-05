@@ -226,7 +226,7 @@ Tom Ellis
 Founder`}
                   readOnly
                   className="text-sm resize-none"
-                  rows={12}
+                  rows={14}
                 />
                 <Button
                   variant="outline"
