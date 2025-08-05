@@ -16,6 +16,7 @@ Preferred communication style: Simple, everyday language.
 - Professional email templates are ready with Tom Ellis signature and business messaging
 - Sometimes improving working features leads to frustrating loops - focus on what works
 - Demo shows comprehensive legal document analysis with realistic file types and analysis results
+- Avoid endless technical refinements when core functionality serves business needs
 
 ## System Architecture
 
