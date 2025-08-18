@@ -121,7 +121,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.json([
       {
         statement: "I was excluded from the evaluation.",
-        contradicted_by: "Mae Igi declined to attend the psychological evaluation.",
+        contradicted_by: "Respondent declined to attend the psychological evaluation.",
         source: "Email, 4/10/2023, Page 3, Line 12",
         confidence: 94,
         impact: "High",
@@ -133,8 +133,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/mock/misconduct", requireAuth, (req: AuthenticatedRequest, res) => {
     res.json([
       {
-        accusation: "Tom never communicates.",
-        reciprocal_evidence: "47 unanswered messages from Tom",
+        accusation: "Petitioner never communicates.",
+        reciprocal_evidence: "47 unanswered messages from Petitioner",
         source: "Exhibit D, Lines 33–49",
         impact: "High",
         message_trail_link: "exhibits/exhibit_d.pdf"
@@ -170,7 +170,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       },
       {
         date: "2023-03-25",
-        event: "Emotional Pressure Message from Mae",
+        event: "Emotional Pressure Message from Respondent",
         type: "alienation",
         source: "Text Message Log"
       },
@@ -190,9 +190,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       <h2>Executive Summary</h2>
       <p>This report identifies contradictions, misconduct, and manipulation patterns with full citations.</p>
       <h2>Contradictions</h2>
-      <ul><li>"I was excluded from the evaluation" vs. Email 4/10/2023 where Mae declined to attend.</li></ul>
+      <ul><li>"I was excluded from the evaluation" vs. Email 4/10/2023 where Respondent declined to attend.</li></ul>
       <h2>Reciprocal Misconduct</h2>
-      <ul><li>Mae claimed Tom never communicates, but left 47 of his texts unanswered (Exhibit D).</li></ul>
+      <ul><li>Respondent claimed Petitioner never communicates, but left 47 of his texts unanswered (Exhibit D).</li></ul>
       <h2>Parental Alienation</h2>
       <ul><li>Repeated pre-court statements such as "You don't have to be afraid of your dad anymore."</li></ul>
       <h2>Timeline Snapshot</h2>

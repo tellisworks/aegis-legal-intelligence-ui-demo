@@ -92,7 +92,7 @@ export default function ReportPanel() {
                           <p><strong>Contradiction #1:</strong> Exclusion from Psychological Evaluation</p>
                           <ul className="ml-4 mt-2 space-y-1">
                             <li>• <strong>Claimed Statement:</strong> "I was excluded from the evaluation"</li>
-                            <li>• <strong>Contradictory Evidence:</strong> Email dated April 10, 2023, wherein Jane Smith affirmatively declined to attend (Exhibit A, Page 3, Line 12)</li>
+                            <li>• <strong>Contradictory Evidence:</strong> Email dated April 10, 2023, wherein Respondent affirmatively declined to attend (Exhibit A, Page 3, Line 12)</li>
                             <li>• <strong>AI Confidence:</strong> 94% certainty based on linguistic analysis</li>
                             <li>• <strong>Legal Impact:</strong> Material misrepresentation to the Court</li>
                           </ul>
@@ -104,7 +104,7 @@ export default function ReportPanel() {
                             </h4>
                             <div className="bg-white border rounded p-3 font-mono text-sm">
                               <div className="border-b pb-2 mb-2 text-gray-600">
-                                <div><strong>From:</strong> jane.smith@email.com</div>
+                                <div><strong>From:</strong> respondent@email.com</div>
                                 <div><strong>To:</strong> dr.smith@psycheval.com</div>
                                 <div><strong>Date:</strong> April 10, 2023, 2:47 PM</div>
                                 <div><strong>Subject:</strong> Re: Psychological Evaluation Appointment</div>
@@ -114,7 +114,7 @@ export default function ReportPanel() {
                                 After consideration, <mark className="bg-yellow-200">I have decided not to attend the psychological evaluation scheduled for April 15th</mark>. I don't feel it's necessary at this time and would prefer to focus on other aspects of the case.<br/><br/>
                                 Please cancel my appointment.<br/><br/>
                                 Thank you,<br/>
-                                Jane Smith
+                                Respondent
                               </div>
                             </div>
                             <div className="mt-2 text-xs text-blue-600">

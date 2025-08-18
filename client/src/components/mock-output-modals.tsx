@@ -20,7 +20,7 @@ export function MockExhibitModal({ isOpen, onClose, title, type }: MockModalProp
           <div className="space-y-4">
             <div className="bg-gray-50 p-4 rounded border">
               <div className="text-sm text-gray-600 mb-3">
-                <strong>From:</strong> jane.smith@email.com<br/>
+                <strong>From:</strong> respondent@email.com<br/>
                 <strong>To:</strong> dr.smith@psycheval.com<br/>
                 <strong>Date:</strong> April 10, 2023, 2:47 PM<br/>
                 <strong>Subject:</strong> Re: Psychological Evaluation Appointment
@@ -30,7 +30,7 @@ export function MockExhibitModal({ isOpen, onClose, title, type }: MockModalProp
                 After consideration, I have decided not to attend the psychological evaluation scheduled for April 15th. I don't feel it's necessary at this time and would prefer to focus on other aspects of the case.<br/><br/>
                 Please cancel my appointment.<br/><br/>
                 Thank you,<br/>
-                Jane Smith
+                Respondent
               </div>
             </div>
             <div className="text-xs text-gray-500">

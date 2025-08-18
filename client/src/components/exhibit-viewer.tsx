@@ -18,9 +18,9 @@ interface ExhibitItem {
 const mockExhibits: ExhibitItem[] = [
   {
     id: "EX-001",
-    title: "Email - Mae Declining Evaluation",
-    description: "Email from Mae Igi stating she will not attend the psychological evaluation",
-    source: "mae.igi@email.com",
+    title: "Email - Respondent Declining Evaluation",
+    description: "Email from Respondent stating she will not attend the psychological evaluation",
+    source: "respondent@email.com",
     date: "2023-04-10",
     pages: 1,
     type: "email",
@@ -29,7 +29,7 @@ const mockExhibits: ExhibitItem[] = [
   {
     id: "EX-002", 
     title: "Text Message Thread - Unanswered Communications",
-    description: "47 consecutive text messages from Tom to Mae with no responses",
+    description: "47 consecutive text messages from Petitioner to Respondent with no responses",
     source: "Phone Records",
     date: "2023-03-15 to 2023-04-01",
     pages: 12,
@@ -39,7 +39,7 @@ const mockExhibits: ExhibitItem[] = [
   {
     id: "EX-003",
     title: "Audio Recording - 'Don't be afraid of dad'",
-    description: "Recording of Mae telling child 'You don't have to be afraid of your dad anymore'",
+    description: "Recording of Respondent telling child 'You don't have to be afraid of your dad anymore'",
     source: "Client Recording Device",
     date: "2023-03-28",
     pages: 1,
@@ -49,7 +49,7 @@ const mockExhibits: ExhibitItem[] = [
   {
     id: "EX-004",
     title: "Court Filing - Rule for Contempt",
-    description: "Original contempt filing with Mae's claims of exclusion",
+    description: "Original contempt filing with Respondent's claims of exclusion",
     source: "Court Records",
     date: "2023-03-15",
     pages: 8,

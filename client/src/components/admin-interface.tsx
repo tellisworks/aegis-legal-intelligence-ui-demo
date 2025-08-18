@@ -286,11 +286,11 @@ Or visit the demo and enter this invite code: ${inviteResult.inviteCode}
 
 This interactive demo will show you how our system anchors all AI outputs to specific exhibits and requires attorney validation, eliminating hallucination risks and making it fully court-defensible.
 
-If you have any questions or would like to discuss how Aegis can help your practice, please feel free to email me at ellistw@hotmail.com.
+If you have any questions or would like to discuss how Aegis can help your practice, please feel free to contact us.
 
 Best regards,
-Tom Ellis
-Founder, Aegis Legal Intelligence`}
+The Aegis Team
+Aegis Legal Intelligence`}
                   readOnly
                   className="text-sm resize-none"
                   rows={14}
@@ -313,11 +313,11 @@ Or visit the demo and enter this invite code: ${inviteResult.inviteCode}
 
 This interactive demo will show you how our system anchors all AI outputs to specific exhibits and requires attorney validation, eliminating hallucination risks and making it fully court-defensible.
 
-If you have any questions or would like to discuss how Aegis can help your practice, please feel free to email me at ellistw@hotmail.com.
+If you have any questions or would like to discuss how Aegis can help your practice, please feel free to contact us.
 
 Best regards,
-Tom Ellis
-Founder, Aegis Legal Intelligence`, "Email Template")}
+The Aegis Team
+Aegis Legal Intelligence`, "Email Template")}
                 >
                   {copiedField === "Email Template" ? (
                     <>

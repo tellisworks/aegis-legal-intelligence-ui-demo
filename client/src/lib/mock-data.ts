@@ -33,7 +33,7 @@ export interface TimelineEvent {
 export const mockContradictions: Contradiction[] = [
   {
     statement: "I was excluded from the evaluation.",
-    contradicted_by: "Jane Smith declined to attend the psychological evaluation.",
+    contradicted_by: "Respondent declined to attend the psychological evaluation.",
     source: "Email, 4/10/2023, Page 3, Line 12",
     confidence: 94,
     impact: "High",
@@ -91,7 +91,7 @@ export const mockTimeline: TimelineEvent[] = [
   },
   {
     date: "2023-03-25",
-    event: "Emotional Pressure Message from Mae",
+    event: "Emotional Pressure Message from Respondent",
     type: "alienation",
     source: "Text Message Log"
   },

@@ -146,7 +146,7 @@ export default function ResultsPanel() {
                       <Button 
                         size="sm" 
                         className="bg-primary text-white hover:bg-primary/90"
-                        onClick={() => showExhibit("Email - Jane Smith Declining Evaluation", "email")}
+                        onClick={() => showExhibit("Email - Respondent Declining Evaluation", "email")}
                       >
                         <Link className="mr-2 h-4 w-4" />
                         View Citation
@@ -172,7 +172,7 @@ export default function ResultsPanel() {
                         supportingExhibits: [
                           {
                             exhibit: "Exhibit A",
-                            title: "Email - Jane Smith Declining Psychological Evaluation", 
+                            title: "Email - Respondent Declining Psychological Evaluation", 
                             relevantQuote: "I have decided not to attend the psychological evaluation scheduled for April 15th",
                             pageReference: "Page 3, Line 12"
                           },
@@ -307,7 +307,7 @@ export default function ResultsPanel() {
                           {
                             exhibit: "Exhibit B",
                             title: "Text Message Thread - Unanswered Communications",
-                            relevantQuote: "47 consecutive messages with zero responses from Jane Smith",
+                            relevantQuote: "47 consecutive messages with zero responses from Respondent",
                             pageReference: "Lines 33-49"
                           },
                           {

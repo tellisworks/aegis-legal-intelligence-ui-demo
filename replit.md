@@ -20,6 +20,12 @@ Preferred communication style: Simple, everyday language.
 
 ## Recent Updates
 
+- **Generic Name Replacement** (Aug 18, 2025): Replaced all specific names with generic legal terms
+  - Changed "Mae", "Tom", and "Jane Smith" to "Respondent" and "Petitioner" throughout application
+  - Updated email templates to use "The Aegis Team" instead of specific individuals
+  - Maintains professional legal demo appearance while removing personal references
+  - All mock case data now uses standard legal terminology
+
 - **Executive Overview Summary** (Aug 5, 2025): Added comprehensive executive briefing that appears first in Results tab
   - Shows key findings, critical contradictions, behavior patterns, and document statistics
   - Emphasizes "Preliminary AI Analysis - Attorney validation required"
